@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Política de Privacidade — Natália Ports</title>
+  <meta name="description" content="Política de Privacidade e LGPD — Natália Ports." />
+  <title>Política de Privacidade / LGPD — Natália Ports</title>
   <style>
     :root{
       --brown:#2E2418;
+      --wine:#472C2F;
+      --beige:#A79583;
       --off:#F5F1ED;
       --ink:#241B16;
       --line:rgba(46,36,24,.16);
@@ -19,39 +22,199 @@
       background:var(--off);
       color:var(--ink);
       font-family:var(--sans);
+      line-height:1.6;
     }
-    .wrap{width:min(calc(100% - 48px),820px);margin:0 auto;padding:clamp(60px,8vw,110px) 0}
-    a{color:inherit}
+    a{color:var(--wine)}
+    .top{
+      background:var(--brown);
+      color:var(--off);
+      padding:22px 0;
+    }
+    .top .wrap{width:min(calc(100% - 48px),820px);margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px}
     .back{
-      display:inline-block;
-      margin-bottom:40px;
       font-size:.72rem;
       text-transform:uppercase;
       letter-spacing:.16em;
       text-decoration:none;
-      border-bottom:1px solid var(--line);
-      padding-bottom:2px;
+      color:var(--off);
+      opacity:.85;
     }
-    h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,4.5vw,3.4rem);margin:0 0 30px;letter-spacing:-.02em}
-    p{line-height:1.7;color:#4a3d33;max-width:640px}
-    .note{
-      margin-top:48px;
-      padding-top:24px;
-      border-top:1px solid var(--line);
-      font-size:.78rem;
+    .back:hover{opacity:1}
+    .top .brand{font-size:.72rem;text-transform:uppercase;letter-spacing:.18em;opacity:.7}
+    .wrap{width:min(calc(100% - 48px),820px);margin:0 auto}
+    .hero{padding:clamp(50px,8vw,90px) 0 10px}
+    h1{
+      font-family:var(--serif);
+      font-weight:400;
+      font-size:clamp(2rem,4.2vw,3.2rem);
+      margin:0 0 14px;
+      letter-spacing:-.02em;
+    }
+    .updated{
+      font-size:.72rem;
       text-transform:uppercase;
       letter-spacing:.1em;
       color:#6f625a;
+      margin-bottom:40px;
+    }
+    .lede{
+      font-family:var(--serif);
+      font-size:clamp(1.05rem,1.6vw,1.3rem);
+      max-width:640px;
+      color:#3b2f26;
+      margin-bottom:8px;
+    }
+    main{padding-bottom:clamp(70px,9vw,120px)}
+    section{
+      padding:34px 0;
+      border-top:1px solid var(--line);
+    }
+    section:first-of-type{border-top:none}
+    h2{
+      font-family:var(--serif);
+      font-weight:400;
+      font-size:clamp(1.3rem,2.2vw,1.7rem);
+      margin:0 0 14px;
+      letter-spacing:-.01em;
+    }
+    p{margin:0 0 14px;max-width:680px;color:#3b2f26}
+    ul{margin:0 0 14px;padding-left:20px;max-width:660px;color:#3b2f26}
+    li{margin-bottom:8px}
+    strong{color:var(--ink)}
+    .callout{
+      background:#efe6dc;
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:20px 24px;
+      max-width:680px;
+      margin:0 0 14px;
+    }
+    .callout p{margin:0}
+    .callout p + p{margin-top:10px}
+    .contact-box{
+      background:var(--brown);
+      color:var(--off);
+      border-radius:10px;
+      padding:28px 30px;
+      max-width:680px;
+    }
+    .contact-box p{color:rgba(245,241,237,.82);margin:0 0 10px}
+    .contact-box a{color:var(--off);font-weight:700}
+    footer{
+      background:var(--brown);
+      color:rgba(245,241,237,.55);
+      padding:26px 0;
+      font-size:.68rem;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      text-align:center;
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <a class="back" href="index-natalia-ports.html">← Voltar</a>
-    <h1>Política de Privacidade / LGPD</h1>
-    <p>Esta página está em construção. Em breve, aqui estarão descritas as práticas de coleta, uso e proteção de dados pessoais dos visitantes deste site, em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).</p>
-    <p>Dúvidas sobre privacidade e tratamento de dados podem ser encaminhadas diretamente aos canais de contato da NP Treinamentos Ltda.</p>
-    <div class="note">39.982.896/0001-97 — NP Treinamentos Ltda</div>
+  <div class="top">
+    <div class="wrap">
+      <a class="back" href="index-natalia-ports.html">← Voltar ao site</a>
+      <span class="brand">Natália Ports</span>
+    </div>
   </div>
+
+  <div class="wrap hero">
+    <h1>Política de Privacidade / LGPD</h1>
+    <div class="updated">Última atualização: 17 de setembro de 2026</div>
+    <p class="lede">Esta política explica, de forma simples e direta, quais dados podem ser coletados neste site, para que servem e quais direitos você tem sobre eles, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD).</p>
+  </div>
+
+  <main class="wrap">
+    <section>
+      <h2>1. Quem é o controlador dos dados</h2>
+      <p>Este site é operado por <strong>NP Treinamentos Ltda</strong> (CNPJ 39.982.896/0001-97), responsável pelas marcas Natália Ports, LUME e We Bilingual, doravante referida como "nós" ou "NP Treinamentos". Somos os responsáveis pelo tratamento dos dados pessoais coletados através deste site.</p>
+    </section>
+
+    <section>
+      <h2>2. Quais dados podem ser coletados</h2>
+      <p>Coletamos dados em dois momentos:</p>
+      <ul>
+        <li><strong>Dados fornecidos voluntariamente</strong> — quando você preenche o formulário de Sessão Estratégica, entra em contato pelo WhatsApp ou pelo Instagram, ou interage diretamente conosco. Isso pode incluir nome, telefone, e-mail e as informações que você optar por compartilhar.</li>
+        <li><strong>Dados de navegação</strong> — coletados automaticamente quando as ferramentas de análise mencionadas abaixo estiverem ativas, como endereço IP, tipo de dispositivo e navegador, páginas visitadas, tempo de permanência e origem do acesso.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Ferramentas de análise e comportamento</h2>
+      <p>Este site foi estruturado para futuramente utilizar as seguintes ferramentas de análise:</p>
+      <ul>
+        <li><strong>Google Analytics 4</strong> — para entender volume de acessos, origem do tráfego e comportamento geral de navegação.</li>
+        <li><strong>Google Tag Manager</strong> — para gerenciar de forma organizada as tags e ferramentas de medição do site.</li>
+        <li><strong>Microsoft Clarity</strong> — para gerar mapas de calor e gravações anonimizadas de sessão, ajudando a entender como as páginas são usadas e onde a experiência pode ser melhorada.</li>
+      </ul>
+      <div class="callout">
+        <p><strong>Situação atual: nenhuma dessas ferramentas está ativa.</strong> A estrutura técnica já existe no código do site, mas nenhum dado de navegação é coletado, enviado ou processado por essas ferramentas até que os identificadores (IDs) reais sejam inseridos pela equipe responsável.</p>
+        <p>Assim que forem ativadas, esta política será atualizada com detalhes específicos de cada ferramenta e, quando aplicável, um aviso de cookies será exibido para que você possa gerenciar suas preferências de consentimento.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>4. Cookies</h2>
+      <p>Cookies são pequenos arquivos que um site pode armazenar no seu navegador para lembrar preferências ou coletar dados de uso. Atualmente, este site <strong>não utiliza cookies de análise ou rastreamento</strong> — apenas o que for estritamente necessário para seu funcionamento básico, quando aplicável. Quando as ferramentas descritas no item 3 forem ativadas, elas poderão utilizar cookies próprios, e você será informado por meio de um aviso específico no momento do acesso.</p>
+    </section>
+
+    <section>
+      <h2>5. Para que usamos seus dados</h2>
+      <p>Os dados fornecidos voluntariamente são usados para:</p>
+      <ul>
+        <li>Responder contatos e agendar Sessões Estratégicas com Natália Ports;</li>
+        <li>Atender solicitações sobre a We Bilingual e a LUME via WhatsApp;</li>
+        <li>Enviar informações sobre produtos, serviços e conteúdos do ecossistema Natália Ports, quando houver interesse manifestado;</li>
+        <li>Compreender e melhorar a navegação e o desempenho do site, quando as ferramentas de análise estiverem ativas.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>6. Com quem seus dados podem ser compartilhados</h2>
+      <p>Não vendemos seus dados pessoais. Eles podem ser compartilhados apenas com prestadores de serviço estritamente necessários à operação do site e dos canais de contato — por exemplo, provedores de formulários (Google Forms), mensageria (WhatsApp) e, futuramente, as ferramentas de análise citadas no item 3 — sempre em conformidade com a LGPD e limitados ao necessário para a finalidade de cada serviço.</p>
+    </section>
+
+    <section>
+      <h2>7. Base legal e consentimento</h2>
+      <p>O tratamento dos seus dados se baseia no seu <strong>consentimento</strong>, ao preencher formulários ou iniciar contato voluntariamente, e no <strong>legítimo interesse</strong> em manter comunicação comercial referente aos serviços solicitados. Você pode revogar seu consentimento a qualquer momento, bastando entrar em contato pelos canais informados no final desta página — a revogação não afeta a legalidade de tratamentos já realizados antes dela.</p>
+    </section>
+
+    <section>
+      <h2>8. Seus direitos como titular dos dados</h2>
+      <p>De acordo com o artigo 18 da LGPD, você tem direito a:</p>
+      <ul>
+        <li>Confirmar a existência de tratamento dos seus dados;</li>
+        <li>Acessar os dados que temos sobre você;</li>
+        <li>Corrigir dados incompletos, inexatos ou desatualizados;</li>
+        <li>Solicitar anonimização, bloqueio ou eliminação de dados desnecessários ou tratados em desconformidade com a lei;</li>
+        <li>Solicitar a portabilidade dos seus dados a outro fornecedor de serviço;</li>
+        <li>Ser informado sobre com quem compartilhamos seus dados;</li>
+        <li>Revogar o consentimento a qualquer momento;</li>
+        <li>Se opor a um tratamento realizado com base em outras hipóteses legais, quando aplicável.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>9. Segurança dos dados</h2>
+      <p>Adotamos medidas razoáveis, técnicas e organizacionais, para proteger os dados pessoais sob nossa responsabilidade contra acessos não autorizados, perda, alteração ou divulgação indevida.</p>
+    </section>
+
+    <section>
+      <h2>10. Alterações desta política</h2>
+      <p>Esta política pode ser atualizada periodicamente, especialmente quando as ferramentas de análise mencionadas no item 3 forem efetivamente ativadas. A data no topo desta página indica a versão mais recente.</p>
+    </section>
+
+    <section>
+      <h2>11. Fale conosco</h2>
+      <p>Para dúvidas, solicitações ou para exercer qualquer um dos direitos listados acima relacionados à privacidade e ao tratamento de dados pessoais neste site, entre em contato:</p>
+      <div class="contact-box">
+        <p>NP Treinamentos Ltda — CNPJ 39.982.896/0001-97</p>
+        <p>WhatsApp: <a href="https://api.whatsapp.com/send/?phone=554488271830&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener">(44) 8827-1830</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>39.982.896/0001-97 — NP Treinamentos Ltda</footer>
 </body>
 </html>

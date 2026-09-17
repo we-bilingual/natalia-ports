@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Termos de Uso — Natália Ports." />
   <title>Termos de Uso — Natália Ports</title>
   <style>
     :root{
       --brown:#2E2418;
+      --wine:#472C2F;
       --off:#F5F1ED;
       --ink:#241B16;
       --line:rgba(46,36,24,.16);
@@ -19,39 +21,160 @@
       background:var(--off);
       color:var(--ink);
       font-family:var(--sans);
+      line-height:1.6;
     }
-    .wrap{width:min(calc(100% - 48px),820px);margin:0 auto;padding:clamp(60px,8vw,110px) 0}
-    a{color:inherit}
+    a{color:var(--wine)}
+    .top{
+      background:var(--brown);
+      color:var(--off);
+      padding:22px 0;
+    }
+    .top .wrap{width:min(calc(100% - 48px),820px);margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px}
     .back{
-      display:inline-block;
-      margin-bottom:40px;
       font-size:.72rem;
       text-transform:uppercase;
       letter-spacing:.16em;
       text-decoration:none;
-      border-bottom:1px solid var(--line);
-      padding-bottom:2px;
+      color:var(--off);
+      opacity:.85;
     }
-    h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,4.5vw,3.4rem);margin:0 0 30px;letter-spacing:-.02em}
-    p{line-height:1.7;color:#4a3d33;max-width:640px}
-    .note{
-      margin-top:48px;
-      padding-top:24px;
-      border-top:1px solid var(--line);
-      font-size:.78rem;
+    .back:hover{opacity:1}
+    .top .brand{font-size:.72rem;text-transform:uppercase;letter-spacing:.18em;opacity:.7}
+    .wrap{width:min(calc(100% - 48px),820px);margin:0 auto}
+    .hero{padding:clamp(50px,8vw,90px) 0 10px}
+    h1{
+      font-family:var(--serif);
+      font-weight:400;
+      font-size:clamp(2rem,4.2vw,3.2rem);
+      margin:0 0 14px;
+      letter-spacing:-.02em;
+    }
+    .updated{
+      font-size:.72rem;
       text-transform:uppercase;
       letter-spacing:.1em;
       color:#6f625a;
+      margin-bottom:40px;
+    }
+    .lede{
+      font-family:var(--serif);
+      font-size:clamp(1.05rem,1.6vw,1.3rem);
+      max-width:640px;
+      color:#3b2f26;
+      margin-bottom:8px;
+    }
+    main{padding-bottom:clamp(70px,9vw,120px)}
+    section{
+      padding:34px 0;
+      border-top:1px solid var(--line);
+    }
+    section:first-of-type{border-top:none}
+    h2{
+      font-family:var(--serif);
+      font-weight:400;
+      font-size:clamp(1.3rem,2.2vw,1.7rem);
+      margin:0 0 14px;
+      letter-spacing:-.01em;
+    }
+    p{margin:0 0 14px;max-width:680px;color:#3b2f26}
+    ul{margin:0 0 14px;padding-left:20px;max-width:660px;color:#3b2f26}
+    li{margin-bottom:8px}
+    strong{color:var(--ink)}
+    .contact-box{
+      background:var(--brown);
+      color:var(--off);
+      border-radius:10px;
+      padding:28px 30px;
+      max-width:680px;
+    }
+    .contact-box p{color:rgba(245,241,237,.82);margin:0 0 10px}
+    .contact-box a{color:var(--off);font-weight:700}
+    footer{
+      background:var(--brown);
+      color:rgba(245,241,237,.55);
+      padding:26px 0;
+      font-size:.68rem;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      text-align:center;
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <a class="back" href="index-natalia-ports.html">← Voltar</a>
-    <h1>Termos de Uso</h1>
-    <p>Esta página está em construção. Em breve, aqui estarão descritas as condições de uso deste site, incluindo direitos, responsabilidades e regras de utilização do conteúdo publicado pela Natália Ports.</p>
-    <p>Dúvidas sobre os termos de uso podem ser encaminhadas diretamente aos canais de contato da NP Treinamentos Ltda.</p>
-    <div class="note">39.982.896/0001-97 — NP Treinamentos Ltda</div>
+  <div class="top">
+    <div class="wrap">
+      <a class="back" href="index-natalia-ports.html">← Voltar ao site</a>
+      <span class="brand">Natália Ports</span>
+    </div>
   </div>
+
+  <div class="wrap hero">
+    <h1>Termos de Uso</h1>
+    <div class="updated">Última atualização: 17 de setembro de 2026</div>
+    <p class="lede">Ao acessar e utilizar este site, você concorda com as condições descritas abaixo. Leia com atenção antes de navegar ou preencher qualquer formulário.</p>
+  </div>
+
+  <main class="wrap">
+    <section>
+      <h2>1. Sobre este site</h2>
+      <p>Este site é de titularidade da <strong>NP Treinamentos Ltda</strong> (CNPJ 39.982.896/0001-97), responsável pelas marcas Natália Ports, LUME e We Bilingual, e tem caráter institucional e informativo, apresentando o ecossistema de mentorias, treinamentos, palestras, consultorias e o curso de inglês oferecidos pela empresa.</p>
+    </section>
+
+    <section>
+      <h2>2. Aceitação dos termos</h2>
+      <p>Ao navegar neste site, preencher o formulário de Sessão Estratégica ou iniciar contato pelos canais disponibilizados, você declara estar de acordo com estes Termos de Uso e com a nossa <a href="privacidade.html">Política de Privacidade / LGPD</a>.</p>
+    </section>
+
+    <section>
+      <h2>3. Uso permitido</h2>
+      <p>Você concorda em utilizar este site apenas para finalidades lícitas, sem violar direitos de terceiros, sem tentar acessar áreas restritas indevidamente e sem utilizar o conteúdo de forma que possa prejudicar o funcionamento do site ou a reputação da marca.</p>
+    </section>
+
+    <section>
+      <h2>4. Propriedade intelectual</h2>
+      <p>Todos os textos, imagens, vídeos, identidade visual e demais conteúdos publicados neste site são de propriedade da NP Treinamentos Ltda ou usados sob autorização, e estão protegidos pela legislação de direitos autorais e propriedade intelectual. É proibida a reprodução, distribuição ou uso comercial desse conteúdo sem autorização prévia e expressa.</p>
+    </section>
+
+    <section>
+      <h2>5. Links externos</h2>
+      <p>Este site pode conter links para plataformas de terceiros, como Instagram, WhatsApp e Google Forms. Não temos controle sobre o conteúdo, funcionamento ou políticas de privacidade desses serviços externos, e não nos responsabilizamos por eles. Recomendamos a leitura dos termos e políticas de cada plataforma acessada.</p>
+    </section>
+
+    <section>
+      <h2>6. Disponibilidade do site</h2>
+      <p>Fazemos esforços razoáveis para manter o site disponível e funcionando corretamente, mas não garantimos disponibilidade contínua ou ininterrupta. O site pode passar por manutenções, atualizações ou instabilidades temporárias sem aviso prévio.</p>
+    </section>
+
+    <section>
+      <h2>7. Responsabilidade sobre as informações</h2>
+      <p>O conteúdo deste site tem caráter informativo e institucional. Decisões pessoais, profissionais ou de negócio não devem se basear exclusivamente nas informações aqui apresentadas — recomendamos sempre buscar orientação individualizada quando aplicável. Não nos responsabilizamos por decisões tomadas unicamente com base no conteúdo do site.</p>
+    </section>
+
+    <section>
+      <h2>8. Formulários e canais de contato</h2>
+      <p>O formulário de Sessão Estratégica e o canal de WhatsApp são meios de contato comercial. Os dados informados por você nesses canais são tratados conforme descrito em nossa <a href="privacidade.html">Política de Privacidade / LGPD</a>.</p>
+    </section>
+
+    <section>
+      <h2>9. Alterações destes termos</h2>
+      <p>Estes Termos de Uso podem ser atualizados a qualquer momento, para refletir mudanças no site, nos serviços oferecidos ou na legislação aplicável. A data no topo desta página indica a versão mais recente.</p>
+    </section>
+
+    <section>
+      <h2>10. Legislação aplicável</h2>
+      <p>Estes Termos de Uso são regidos pelas leis brasileiras. Eventuais controvérsias decorrentes do uso deste site serão submetidas ao foro da comarca do domicílio da NP Treinamentos Ltda, salvo disposição legal em contrário.</p>
+    </section>
+
+    <section>
+      <h2>11. Fale conosco</h2>
+      <p>Para dúvidas relacionadas a estes Termos de Uso, entre em contato:</p>
+      <div class="contact-box">
+        <p>NP Treinamentos Ltda — CNPJ 39.982.896/0001-97</p>
+        <p>WhatsApp: <a href="https://api.whatsapp.com/send/?phone=554488271830&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener">(44) 8827-1830</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>39.982.896/0001-97 — NP Treinamentos Ltda</footer>
 </body>
 </html>
