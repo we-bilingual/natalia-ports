@@ -421,95 +421,100 @@
       z-index:2;
     }
 
-    .journey-shell{
-      min-height:100svh;
-      display:grid;
-      grid-template-columns:.82fr 1.18fr;
-    }
+    .journey{height:300vh}
 
-    .journey-fixed{
-      padding:clamp(48px,7vw,96px);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      border-right:1px solid rgba(245,241,237,.16);
+    .journey-pin{
       position:sticky;
       top:0;
       height:100svh;
-      background:var(--wine);
-      z-index:1;
-    }
-
-    .journey-fixed h2{
-      font-size:clamp(2.9rem,4.6vw,5.4rem);
-      margin:14px 0 0;
-    }
-
-    .journey-fixed p{
-      color:rgba(245,241,237,.68);
-      max-width:430px;
-      line-height:1.7;
-    }
-
-    .journey-note{
-      font-family:var(--serif);
-      font-style:italic;
-      font-size:1.05rem;
-      color:rgba(245,241,237,.85);
-      margin-top:14px;
-    }
-
-    .journey-progress{
-      display:flex;
-      gap:18px;
-      margin-top:28px;
-    }
-
-    .journey-progress-dot{
-      font-size:.68rem;
-      letter-spacing:.14em;
-      font-weight:700;
-      opacity:.35;
-      transition:opacity .4s ease;
-    }
-
-    .journey-progress-dot.active{opacity:1}
-
-    .journey-scroll{padding:12vh clamp(30px,6vw,82px)}
-
-    .journey-item{
-      min-height:76vh;
       display:flex;
       flex-direction:column;
+      align-items:center;
       justify-content:center;
-      border-bottom:1px solid rgba(245,241,237,.14);
+      gap:clamp(28px,4.5vw,52px);
+      padding:40px clamp(20px,5vw,60px);
+      text-align:center;
     }
 
-    .journey-item:last-child{border-bottom:0}
+    .journey-pin .eyebrow{opacity:.7}
 
-    .journey-item .kicker{
-      text-transform:uppercase;
-      letter-spacing:.2em;
-      font-size:.7rem;
-      opacity:.58;
-      margin-bottom:22px;
+    .journey-title{
+      font-size:clamp(2.1rem,4.4vw,4rem);
+      margin:0;
+      line-height:1;
     }
 
-    .journey-item h3{
+    .journey-circles{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .circle-wrap{
+      opacity:0;
+      transform:translateY(26px) scale(.86);
+      transition:opacity .8s cubic-bezier(.16,.84,.44,1), transform .8s cubic-bezier(.16,.84,.44,1);
+    }
+
+    .circle-wrap.is-visible{opacity:1;transform:none}
+
+    .circle{
+      width:clamp(148px,15.5vw,220px);
+      aspect-ratio:1;
+      border-radius:50%;
+      border:1px solid rgba(245,241,237,.4);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      padding:18px;
+    }
+
+    .circle-num{
+      font-size:.66rem;
+      letter-spacing:.16em;
+      opacity:.55;
+    }
+
+    .circle h3{
       font-family:var(--serif);
-      font-size:clamp(2.2rem,4.2vw,4.4rem);
       font-weight:400;
-      margin:0 0 18px;
-      line-height:.98;
+      font-size:clamp(1.2rem,1.9vw,1.6rem);
+      margin:2px 0;
     }
 
-    .journey-item p{
-      max-width:610px;
+    .circle p{
       font-family:var(--serif);
-      font-size:clamp(1.05rem,1.6vw,1.5rem);
-      line-height:1.4;
-      color:rgba(245,241,237,.78);
+      font-style:italic;
+      font-size:.82rem;
+      color:rgba(245,241,237,.7);
+      margin:0;
     }
+
+    .journey-connector{
+      width:0;
+      height:1px;
+      background:rgba(245,241,237,.35);
+      transition:width .7s cubic-bezier(.16,.84,.44,1);
+      flex-shrink:0;
+    }
+
+    .journey-connector.is-visible{width:clamp(20px,3.6vw,56px)}
+
+    .journey-closing{
+      font-family:var(--serif);
+      font-style:italic;
+      font-size:clamp(1rem,1.6vw,1.2rem);
+      color:rgba(245,241,237,.85);
+      max-width:520px;
+      margin:0;
+      opacity:0;
+      transform:translateY(14px);
+      transition:opacity .8s ease, transform .8s ease;
+    }
+
+    .journey-closing.is-visible{opacity:1;transform:none}
 
     .about{
       background:#e8dfd6;
@@ -747,16 +752,12 @@
         justify-content:center;
         padding:48px clamp(20px,5vw,32px);
       }
-      .journey-shell{grid-template-columns:1fr}
-      .journey-fixed{
-        height:auto;
-        min-height:0;
-        padding:32px clamp(20px,5vw,32px);
-        border-right:0;
-        box-shadow:0 18px 30px -20px rgba(0,0,0,.45);
-      }
-      .journey-scroll{padding-top:8vh}
-      .journey-item{min-height:66vh}
+      .journey{height:260vh}
+      .journey-pin{gap:22px;padding:32px 20px}
+      .journey-circles{flex-direction:column}
+      .journey-connector{width:1px;height:0;transition:height .7s cubic-bezier(.16,.84,.44,1)}
+      .journey-connector.is-visible{width:1px;height:clamp(16px,3.6vh,28px)}
+      .circle{width:clamp(160px,46vw,190px)}
       .about-grid{grid-template-columns:1fr}
       .about-photo{position:relative;top:auto;min-height:460px}
     }
@@ -768,8 +769,6 @@
       .section{padding:82px 0}
       .eco-card{padding:40px 20px}
       .footer-legal{font-size:.62rem;gap:8px 18px}
-      .journey-fixed{padding:60px 20px}
-      .journey-scroll{padding:0 20px}
       .stats{grid-template-columns:1fr}
       .stat,.stat:nth-child(odd),.stat:nth-child(even){padding:24px 0;border-right:0}
     }
@@ -786,8 +785,19 @@
         transform:none !important;
         transition:none !important;
       }
-      .eco-card, .stat, .journey-progress-dot, .about-photo img, .hero-copy{
+      .eco-card, .stat, .about-photo img, .hero-copy{
         transition:none !important;
+      }
+      .journey{height:auto !important}
+      .journey-pin{position:relative !important;height:auto !important}
+      .circle-wrap, .journey-connector, .journey-closing{
+        opacity:1 !important;
+        transform:none !important;
+        transition:none !important;
+      }
+      .journey-connector{width:clamp(20px,3.6vw,56px) !important;height:1px !important}
+      @media(max-width:900px){
+        .journey-connector{width:1px !important;height:clamp(16px,3.6vh,28px) !important}
       }
     }
   </style>
@@ -885,42 +895,37 @@
 
     <!-- 03 · EXPERIÊNCIA / UX -->
     <section class="journey" id="filosofia">
-      <div class="journey-shell">
-        <aside class="journey-fixed">
-          <div>
-            <div class="eyebrow">A filosofia por trás de tudo</div>
-            <h2 class="display">Remember<br>Who You Are.</h2>
-          </div>
-          <div>
-            <p>O ecossistema não nasce de produtos isolados. Ele nasce de uma mesma convicção: pessoas fortes constroem lideranças fortes — e lideranças fortes constroem negócios que permanecem.</p>
-            <p class="journey-note">Empresas crescem quando líderes amadurecem.</p>
-            <div class="journey-progress" aria-hidden="true">
-              <span class="journey-progress-dot" data-dot="1">01</span>
-              <span class="journey-progress-dot" data-dot="2">02</span>
-              <span class="journey-progress-dot" data-dot="3">03</span>
+      <div class="journey-pin">
+        <div class="eyebrow">A filosofia por trás de tudo</div>
+        <h2 class="journey-title display">Remember<br>Who You Are.</h2>
+
+        <div class="journey-circles">
+          <div class="circle-wrap" data-circle="1">
+            <div class="circle">
+              <span class="circle-num">01</span>
+              <h3>Identidade</h3>
+              <p>Quem você é.</p>
             </div>
           </div>
-        </aside>
-
-        <div class="journey-scroll">
-          <article class="journey-item reveal" data-step="1">
-            <span class="kicker">01 · Identidade</span>
-            <h3>Quem você é.</h3>
-            <p>Toda transformação começa pela identidade. Antes da estratégia, existe alguém escolhendo, decidindo e liderando.</p>
-          </article>
-
-          <article class="journey-item reveal" data-step="2">
-            <span class="kicker">02 · Liderança</span>
-            <h3>Como você sustenta.</h3>
-            <p>Liderar é amadurecer antes de exigir. Crescer exige visão, responsabilidade, coragem, limites e capacidade de desenvolver pessoas.</p>
-          </article>
-
-          <article class="journey-item reveal" data-step="3">
-            <span class="kicker">03 · Construção</span>
-            <h3>O que permanece.</h3>
-            <p>Estratégia dá forma ao que antes dependia só de esforço. E o que se constrói com propósito é o que permanece — mesmo quando tudo ao redor muda.</p>
-          </article>
+          <div class="journey-connector" data-connector="1"></div>
+          <div class="circle-wrap" data-circle="2">
+            <div class="circle">
+              <span class="circle-num">02</span>
+              <h3>Liderança</h3>
+              <p>Como você conduz.</p>
+            </div>
+          </div>
+          <div class="journey-connector" data-connector="2"></div>
+          <div class="circle-wrap" data-circle="3">
+            <div class="circle">
+              <span class="circle-num">03</span>
+              <h3>Construção</h3>
+              <p>O que você coloca no mundo.</p>
+            </div>
+          </div>
         </div>
+
+        <p class="journey-closing">Identidade. Liderança. Construção.<br>A lógica por trás de tudo o que Natália constrói.</p>
       </div>
     </section>
 
@@ -1017,6 +1022,30 @@
     const aboutPhotoImg = document.getElementById('aboutPhotoImg');
     let parallaxTicking = false;
 
+    // Cena dos três círculos na terceira dobra — entram e se conectam conforme o scroll pinado
+    const journeySection = document.querySelector('.journey');
+    const journeyCircles = document.querySelectorAll('.circle-wrap');
+    const journeyConnectors = document.querySelectorAll('.journey-connector');
+    const journeyClosing = document.querySelector('.journey-closing');
+    const journeyStages = [0.06, 0.36, 0.66];
+    const journeyClosingAt = 0.86;
+
+    function updateJourneyScene() {
+      if (!journeySection) return;
+      const scrollable = journeySection.offsetHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      const rect = journeySection.getBoundingClientRect();
+      const progress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
+
+      journeyCircles.forEach((wrap, i) => {
+        wrap.classList.toggle('is-visible', progress >= journeyStages[i]);
+      });
+      journeyConnectors.forEach((conn, i) => {
+        conn.classList.toggle('is-visible', progress >= journeyStages[i + 1]);
+      });
+      if (journeyClosing) journeyClosing.classList.toggle('is-visible', progress >= journeyClosingAt);
+    }
+
     function updateParallax() {
       if (heroSection) {
         const heroHeight = heroSection.offsetHeight || 1;
@@ -1037,6 +1066,8 @@
         const aboutProgress = Math.min(Math.max((vh - rect.top) / total, 0), 1);
         aboutPhotoImg.style.transform = `scale(${1 + aboutProgress * 0.1})`;
       }
+
+      updateJourneyScene();
 
       parallaxTicking = false;
     }
@@ -1098,20 +1129,6 @@
       });
     }
 
-    // Indicador de progresso 01 / 02 / 03 na terceira dobra
-    const progressDots = document.querySelectorAll('.journey-progress-dot');
-    if (progressDots.length) {
-      const journeyProgressObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const step = entry.target.dataset.step;
-            progressDots.forEach(dot => dot.classList.toggle('active', dot.dataset.dot === step));
-          }
-        });
-      }, { threshold: 0.5 });
-
-      document.querySelectorAll('.journey-item').forEach(item => journeyProgressObserver.observe(item));
-    }
   </script>
 </body>
 </html>
