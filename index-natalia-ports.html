@@ -201,8 +201,8 @@
       height:100%;
       object-fit:cover;
       opacity:0;
-      transform:scale(1.1);
-      transition:opacity 1.8s cubic-bezier(.16,.84,.44,1), transform 2.4s cubic-bezier(.16,.84,.44,1);
+      transform:scale(1.045);
+      transition:opacity 1.6s cubic-bezier(.16,.84,.44,1), transform 2.6s cubic-bezier(.16,.84,.44,1);
     }
 
     .hero-video.is-visible{
@@ -214,8 +214,8 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(180deg, rgba(46,36,24,.3) 0%, rgba(71,44,47,.48) 55%, rgba(36,27,22,.8) 100%),
-        radial-gradient(circle at 72% 16%, rgba(167,149,131,.2), transparent 42%);
+        linear-gradient(165deg, rgba(71,44,47,.55) 0%, rgba(46,36,24,.32) 45%, rgba(24,18,14,.72) 100%),
+        radial-gradient(ellipse at 50% 105%, rgba(15,11,8,.55), transparent 60%);
       pointer-events:none;
     }
 
@@ -274,6 +274,9 @@
       color:#685b53;
     }
 
+    .eco-note p{margin:0 0 16px}
+    .eco-note p:last-child{margin-bottom:0}
+
     .eco-cards{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -313,6 +316,31 @@
     }
 
     .eco-card p{line-height:1.65;color:#6f625a;max-width:330px}
+
+    .eco-card-tagline{
+      font-weight:700;
+      color:var(--ink);
+      margin:0 0 8px;
+      max-width:330px;
+    }
+
+    .eco-card{transition:.45s cubic-bezier(.16,.84,.44,1), opacity .4s ease}
+    .eco-cards.is-hovering .eco-card:not(:hover){opacity:.55}
+
+    .eco-card--lume{
+      background:linear-gradient(180deg, rgba(71,44,47,.06), rgba(71,44,47,.02));
+      position:relative;
+    }
+
+    .eco-card--lume::before{
+      content:"";
+      position:absolute;
+      top:0;left:0;right:0;
+      height:3px;
+      background:linear-gradient(90deg, var(--wine), var(--beige));
+    }
+
+    .eco-card--lume h3{font-size:clamp(2.1rem,2.9vw,3.1rem)}
 
     .eco-card-actions{
       margin-top:auto;
@@ -390,6 +418,17 @@
       background:var(--wine);
       color:var(--off);
       padding:0;
+      position:relative;
+    }
+
+    .journey::before{
+      content:"";
+      position:absolute;
+      top:0;left:0;right:0;
+      height:clamp(40px,5vw,70px);
+      background:linear-gradient(180deg, rgba(36,27,22,.14), rgba(36,27,22,0));
+      pointer-events:none;
+      z-index:2;
     }
 
     .journey-shell{
@@ -421,6 +460,30 @@
       max-width:430px;
       line-height:1.7;
     }
+
+    .journey-note{
+      font-family:var(--serif);
+      font-style:italic;
+      font-size:1.05rem;
+      color:rgba(245,241,237,.85);
+      margin-top:14px;
+    }
+
+    .journey-progress{
+      display:flex;
+      gap:18px;
+      margin-top:28px;
+    }
+
+    .journey-progress-dot{
+      font-size:.68rem;
+      letter-spacing:.14em;
+      font-weight:700;
+      opacity:.35;
+      transition:opacity .4s ease;
+    }
+
+    .journey-progress-dot.active{opacity:1}
 
     .journey-scroll{padding:12vh clamp(30px,6vw,82px)}
 
@@ -460,6 +523,16 @@
 
     .about{
       background:#e8dfd6;
+      position:relative;
+    }
+
+    .about::before{
+      content:"";
+      position:absolute;
+      top:0;left:0;right:0;
+      height:clamp(40px,5vw,70px);
+      background:linear-gradient(180deg, rgba(20,14,10,.16), rgba(20,14,10,0));
+      pointer-events:none;
     }
 
     .about-grid{
@@ -499,11 +572,62 @@
       margin:14px 0 28px;
     }
 
+    .about-tagline{
+      font-family:var(--serif);
+      font-style:italic;
+      font-size:clamp(1.1rem,1.6vw,1.3rem);
+      color:#5c4b3f;
+      margin:0 0 18px;
+    }
+
     .about-copy .bio{
       font-family:var(--serif);
       font-size:clamp(1.08rem,1.6vw,1.4rem);
       line-height:1.5;
       max-width:720px;
+    }
+
+    .about-note{
+      margin:18px 0 0;
+      font-size:.8rem;
+      letter-spacing:.02em;
+      color:#7a6d63;
+    }
+
+    .about-highlight{
+      margin-top:36px;
+      padding:24px 28px;
+      border-left:3px solid var(--wine);
+      background:rgba(71,44,47,.06);
+      max-width:640px;
+    }
+
+    .about-highlight-tag{
+      display:block;
+      font-size:.68rem;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-weight:700;
+      color:var(--wine);
+      margin-bottom:10px;
+    }
+
+    .about-highlight p{
+      font-family:var(--serif);
+      font-size:clamp(1.05rem,1.5vw,1.25rem);
+      line-height:1.5;
+      margin:0;
+      color:var(--ink);
+    }
+
+    .about-highlight p em{font-style:italic}
+
+    .about-highlight-secondary{
+      margin-top:12px;
+      font-family:var(--sans) !important;
+      font-size:.85rem !important;
+      color:#7a6d63 !important;
+      line-height:1.6;
     }
 
     .stats{
@@ -621,8 +745,8 @@
       .hero-copy{
         min-height:auto;
         justify-content:flex-start;
-        gap:22px;
-        padding:24px clamp(20px,5vw,32px) 40px;
+        gap:16px;
+        padding:20px clamp(20px,5vw,32px) 36px;
       }
       .hero-main{padding:0}
       .hero-visual{min-height:48svh}
@@ -656,6 +780,23 @@
       .stats{grid-template-columns:1fr}
       .stat,.stat:nth-child(odd),.stat:nth-child(even){padding:24px 0;border-right:0}
     }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .reveal, .reveal-stagger > *{
+        opacity:1 !important;
+        transform:none !important;
+        transition:none !important;
+      }
+      .hero-video{
+        opacity:1 !important;
+        transform:none !important;
+        transition:none !important;
+      }
+      .eco-card, .stat, .journey-progress-dot, .about-photo img, .hero-copy{
+        transition:none !important;
+      }
+    }
   </style>
 </head>
 
@@ -675,7 +816,7 @@
             <h1 class="display">Quem você é <em>sustenta o que você constrói.</em></h1>
             <div class="hero-main-foot">
               <p class="hero-lead">Quanto maior a construção, mais sólida precisa ser a mulher que a sustenta.</p>
-              <p class="hero-sub">Identidade, liderança e negócios para mulheres que querem crescer sem se perder no processo.</p>
+              <p class="hero-sub">Identidade para liderar. Estratégia para construir. Prosperidade para permanecer.</p>
               <a class="hero-cta" href="#ecossistema">Conheça o ecossistema <span>↓</span></a>
             </div>
           </div>
@@ -698,7 +839,10 @@
             <div class="eyebrow">O ecossistema Natália Ports</div>
             <h2 class="section-title display">Uma filosofia.<br><span class="eco-head-highlight">Diferentes formas</span> de construir.</h2>
           </div>
-          <p class="eco-note">A marca Natália Ports é a origem de um ecossistema de desenvolvimento humano, liderança e empreendedorismo. Cada frente nasce da mesma visão e a expressa de um jeito diferente.</p>
+          <div class="eco-note">
+            <p>Uma mesma filosofia atravessa tudo o que Natália constrói: desenvolver pessoas para que possam liderar, prosperar e ampliar seu impacto sem abandonar quem são.</p>
+            <p>Natália Ports, LUME e We Bilingual são expressões diferentes dessa mesma visão.</p>
+          </div>
         </div>
 
         <div class="eco-cards reveal-stagger">
@@ -706,7 +850,8 @@
             <span class="num">01</span>
             <div>
               <h3>Natália Ports</h3>
-              <p>A marca institucional. Mentorias, treinamentos, palestras, consultorias e experiências formativas.</p>
+              <p class="eco-card-tagline">Empresária, mentora e líder.</p>
+              <p>Desenvolve mulheres, líderes e organizações através de mentorias, treinamentos, palestras e experiências estratégicas.</p>
             </div>
             <div class="eco-card-actions">
               <a class="social-link" href="https://www.instagram.com/nataliaports/" target="_blank" rel="noopener">
@@ -720,11 +865,12 @@
             </div>
           </article>
 
-          <article class="eco-card">
+          <article class="eco-card eco-card--lume">
             <span class="num">02</span>
             <div>
               <h3>LUME</h3>
-              <p>A aceleradora de posicionamento e prosperidade para empresárias que querem construir com estrutura sem perder a própria identidade.</p>
+              <p class="eco-card-tagline">Aceleradora de posicionamento e prosperidade.</p>
+              <p>Para empresárias que desejam estruturar, posicionar e sustentar o crescimento dos próprios negócios sem perder identidade.</p>
             </div>
           </article>
 
@@ -732,7 +878,8 @@
             <span class="num">03</span>
             <div>
               <h3>We Bilingual</h3>
-              <p>A escola boutique de inglês. Idioma como ferramenta para ampliar horizontes, conectar culturas e abrir oportunidades.</p>
+              <p class="eco-card-tagline">Escola boutique de inglês.</p>
+              <p>O idioma como ferramenta para ampliar repertório, conectar culturas e abrir novas possibilidades no mundo.</p>
             </div>
             <div class="eco-card-actions">
               <a class="social-link" href="https://www.instagram.com/webilingual/" target="_blank" rel="noopener">
@@ -759,26 +906,34 @@
             <div class="eyebrow">A filosofia por trás de tudo</div>
             <h2 class="display">Remember<br>Who You Are.</h2>
           </div>
-          <p>O ecossistema não nasce de produtos isolados. Ele nasce de uma mesma convicção: pessoas fortes constroem lideranças fortes — e lideranças fortes constroem negócios que permanecem.</p>
+          <div>
+            <p>O ecossistema não nasce de produtos isolados. Ele nasce de uma mesma convicção: pessoas fortes constroem lideranças fortes — e lideranças fortes constroem negócios que permanecem.</p>
+            <p class="journey-note">Empresas crescem quando líderes amadurecem.</p>
+            <div class="journey-progress" aria-hidden="true">
+              <span class="journey-progress-dot" data-dot="1">01</span>
+              <span class="journey-progress-dot" data-dot="2">02</span>
+              <span class="journey-progress-dot" data-dot="3">03</span>
+            </div>
+          </div>
         </aside>
 
         <div class="journey-scroll">
-          <article class="journey-item reveal">
+          <article class="journey-item reveal" data-step="1">
             <span class="kicker">01 · Identidade</span>
             <h3>Quem você é.</h3>
             <p>Toda transformação começa pela identidade. Antes da estratégia, existe alguém escolhendo, decidindo e liderando.</p>
           </article>
 
-          <article class="journey-item reveal">
+          <article class="journey-item reveal" data-step="2">
             <span class="kicker">02 · Liderança</span>
             <h3>Como você sustenta.</h3>
-            <p>Empresas crescem quando líderes amadurecem. Crescer exige visão, responsabilidade, coragem, limites e capacidade de desenvolver pessoas.</p>
+            <p>Liderar é amadurecer antes de exigir. Crescer exige visão, responsabilidade, coragem, limites e capacidade de desenvolver pessoas.</p>
           </article>
 
-          <article class="journey-item reveal">
+          <article class="journey-item reveal" data-step="3">
             <span class="kicker">03 · Construção</span>
-            <h3>O que você constrói.</h3>
-            <p>Estratégia transforma visão em movimento. Posicionamento, gestão, processos e decisões criam estrutura para aquilo que antes dependia apenas de esforço.</p>
+            <h3>O que permanece.</h3>
+            <p>Estratégia dá forma ao que antes dependia só de esforço. E o que se constrói com propósito é o que permanece — mesmo quando tudo ao redor muda.</p>
           </article>
         </div>
       </div>
@@ -794,13 +949,21 @@
         <div class="about-copy reveal-stagger">
           <div class="eyebrow">Por trás da marca</div>
           <h2 class="display">Natália Ports.</h2>
-          <p class="bio">Empresária, mentora e líder. Há 6 anos empreendendo, Natália construiu sua trajetória entre educação, liderança, desenvolvimento humano e negócios. É fundadora da We Bilingual e criadora da LUME, conectando identidade, estratégia e construção em diferentes frentes.</p>
+          <p class="about-tagline">Empresária, mentora, líder e escritora internacional.</p>
+          <p class="bio">Há 6 anos empreendendo, Natália construiu sua trajetória entre educação, liderança, desenvolvimento humano e negócios. É fundadora da We Bilingual, criadora da LUME e desenvolve mulheres e empresas através de mentorias, treinamentos, palestras e experiências formativas.</p>
 
           <div class="stats reveal-stagger">
             <div class="stat"><strong class="counter" data-target="1000" data-prefix="+" data-format="thousand">0</strong><span>alunos impactados pela We Bilingual</span></div>
             <div class="stat"><strong class="counter" data-target="80" data-prefix="+">0</strong><span>mulheres mentoradas pela LUME</span></div>
-            <div class="stat"><strong>Brasil + EUA</strong><span>atuação e impacto</span></div>
+            <div class="stat"><strong>Brasil + EUA</strong><span>atuação e impacto internacional</span></div>
             <div class="stat"><strong class="counter" data-target="15" data-prefix="+">0</strong><span>palestras, eventos e imersões</span></div>
+          </div>
+          <p class="about-note">+10 empresas assessoradas em posicionamento e crescimento.</p>
+
+          <div class="about-highlight reveal">
+            <span class="about-highlight-tag">Escritora internacional</span>
+            <p>Coautora de <em>Determinação em Movimento</em>, com lançamento internacional em Nova York.</p>
+            <p class="about-highlight-secondary">Também é professora de pós-graduação na disciplina Encantamento e Sucesso do Cliente.</p>
           </div>
         </div>
       </div>
@@ -824,6 +987,8 @@
   </main>
 
   <script>
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // Entrada por scroll — .reveal e .reveal-stagger
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -886,14 +1051,16 @@
       parallaxTicking = false;
     }
 
-    window.addEventListener('scroll', () => {
-      if (!parallaxTicking) {
-        requestAnimationFrame(updateParallax);
-        parallaxTicking = true;
-      }
-    }, { passive: true });
+    if (!prefersReducedMotion) {
+      window.addEventListener('scroll', () => {
+        if (!parallaxTicking) {
+          requestAnimationFrame(updateParallax);
+          parallaxTicking = true;
+        }
+      }, { passive: true });
 
-    updateParallax();
+      updateParallax();
+    }
 
     // Contadores animados — dispara quando a seção de stats entra na tela
     function animateCounters(container) {
@@ -901,6 +1068,12 @@
         const target = parseInt(el.dataset.target, 10) || 0;
         const prefix = el.dataset.prefix || '';
         const isThousand = el.dataset.format === 'thousand';
+
+        if (prefersReducedMotion) {
+          el.textContent = prefix + (isThousand ? target.toLocaleString('pt-BR') : target);
+          return;
+        }
+
         const duration = 1500;
         const start = performance.now();
 
@@ -925,6 +1098,30 @@
     }, { threshold: 0.4 });
 
     document.querySelectorAll('.stats').forEach(el => statsObserver.observe(el));
+
+    // Microinteração — destaca o card do ecossistema em hover, ameniza os outros
+    const ecoCardsEl = document.querySelector('.eco-cards');
+    if (ecoCardsEl) {
+      ecoCardsEl.querySelectorAll('.eco-card').forEach((card) => {
+        card.addEventListener('mouseenter', () => ecoCardsEl.classList.add('is-hovering'));
+        card.addEventListener('mouseleave', () => ecoCardsEl.classList.remove('is-hovering'));
+      });
+    }
+
+    // Indicador de progresso 01 / 02 / 03 na terceira dobra
+    const progressDots = document.querySelectorAll('.journey-progress-dot');
+    if (progressDots.length) {
+      const journeyProgressObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const step = entry.target.dataset.step;
+            progressDots.forEach(dot => dot.classList.toggle('active', dot.dataset.dot === step));
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('.journey-item').forEach(item => journeyProgressObserver.observe(item));
+    }
   </script>
 </body>
 </html>
