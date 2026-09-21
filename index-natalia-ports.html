@@ -469,6 +469,19 @@
       justify-content:center;
       gap:6px;
       padding:18px;
+      cursor:pointer;
+      transition:border-color .35s ease, transform .35s ease;
+      outline:none;
+    }
+
+    .circle-wrap.is-active-detail .circle{
+      border-color:rgba(245,241,237,.85);
+      transform:scale(1.06);
+    }
+
+    .circle-wrap:focus-visible .circle{
+      border-color:rgba(245,241,237,.9);
+      box-shadow:0 0 0 3px rgba(245,241,237,.25);
     }
 
     .circle-num{
@@ -501,6 +514,27 @@
     }
 
     .journey-connector.is-visible{width:clamp(20px,3.6vw,56px)}
+
+    .journey-detail{
+      min-height:3.4em;
+      max-width:520px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+    }
+
+    .journey-detail-text{
+      font-family:var(--serif);
+      font-size:clamp(.92rem,1.3vw,1.05rem);
+      line-height:1.6;
+      color:rgba(245,241,237,.82);
+      margin:0;
+      opacity:0;
+      transform:translateY(6px);
+      transition:opacity .35s ease, transform .35s ease;
+    }
+
+    .journey-detail.is-active .journey-detail-text{opacity:1;transform:none}
 
     .journey-closing{
       font-family:var(--serif);
@@ -900,7 +934,7 @@
         <h2 class="journey-title display">Remember<br>Who You Are.</h2>
 
         <div class="journey-circles">
-          <div class="circle-wrap" data-circle="1">
+          <div class="circle-wrap" data-circle="1" tabindex="0" role="button" aria-label="Identidade — saiba mais" aria-expanded="false">
             <div class="circle">
               <span class="circle-num">01</span>
               <h3>Identidade</h3>
@@ -908,7 +942,7 @@
             </div>
           </div>
           <div class="journey-connector" data-connector="1"></div>
-          <div class="circle-wrap" data-circle="2">
+          <div class="circle-wrap" data-circle="2" tabindex="0" role="button" aria-label="Liderança — saiba mais" aria-expanded="false">
             <div class="circle">
               <span class="circle-num">02</span>
               <h3>Liderança</h3>
@@ -916,13 +950,17 @@
             </div>
           </div>
           <div class="journey-connector" data-connector="2"></div>
-          <div class="circle-wrap" data-circle="3">
+          <div class="circle-wrap" data-circle="3" tabindex="0" role="button" aria-label="Construção — saiba mais" aria-expanded="false">
             <div class="circle">
               <span class="circle-num">03</span>
               <h3>Construção</h3>
               <p>O que você coloca no mundo.</p>
             </div>
           </div>
+        </div>
+
+        <div class="journey-detail" aria-live="polite">
+          <p class="journey-detail-text" id="journeyDetailText"></p>
         </div>
 
         <p class="journey-closing">Identidade. Liderança. Construção.<br>A lógica por trás de tudo o que Natália constrói.</p>
@@ -1129,6 +1167,51 @@
       });
     }
 
+    // Terceira dobra — texto explicativo por pilar: hover no desktop, toque no mobile
+    const journeyDetailEl = document.querySelector('.journey-detail');
+    const journeyDetailText = document.getElementById('journeyDetailText');
+    const circleWrapEls = document.querySelectorAll('.circle-wrap');
+    const circleDetails = {
+      '1': 'É a base de como você se posiciona, decide, estabelece limites e reconhece o próprio valor.',
+      '2': 'É a forma como você transforma visão em direção, conduz pessoas, toma decisões e assume responsabilidade pelo crescimento.',
+      '3': 'É onde identidade e liderança ganham forma: nos negócios, projetos, relações, escolhas e resultados que você coloca no mundo.'
+    };
+
+    if (journeyDetailEl && journeyDetailText && circleWrapEls.length) {
+      const isTouchPrimary = window.matchMedia('(hover: none)').matches;
+
+      function setActiveCircle(el) {
+        circleWrapEls.forEach((c) => {
+          const isActive = c === el;
+          c.classList.toggle('is-active-detail', isActive);
+          c.setAttribute('aria-expanded', String(isActive));
+        });
+        if (el) {
+          journeyDetailText.textContent = circleDetails[el.dataset.circle] || '';
+          journeyDetailEl.classList.add('is-active');
+        } else {
+          journeyDetailEl.classList.remove('is-active');
+        }
+      }
+
+      if (isTouchPrimary) {
+        circleWrapEls.forEach((el) => {
+          el.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setActiveCircle(el.classList.contains('is-active-detail') ? null : el);
+          });
+        });
+        document.addEventListener('click', () => setActiveCircle(null));
+      } else {
+        circleWrapEls.forEach((el) => {
+          el.addEventListener('mouseenter', () => setActiveCircle(el));
+          el.addEventListener('mouseleave', () => setActiveCircle(null));
+          el.addEventListener('focus', () => setActiveCircle(el));
+          el.addEventListener('blur', () => setActiveCircle(null));
+          el.addEventListener('click', (e) => e.stopPropagation());
+        });
+      }
+    }
   </script>
 </body>
 </html>
