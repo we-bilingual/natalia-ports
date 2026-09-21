@@ -279,6 +279,7 @@
 
     .eco-note p{margin:0 0 16px}
     .eco-note p:last-child{margin-bottom:0}
+    .eco-note strong{color:var(--ink);font-weight:700}
 
     .eco-cards{
       display:grid;
@@ -294,14 +295,17 @@
       display:flex;
       flex-direction:column;
       gap:22px;
-      transition:.45s cubic-bezier(.16,.84,.44,1);
       position:relative;
       overflow:hidden;
       background:linear-gradient(180deg, rgba(71,44,47,0), rgba(71,44,47,0));
     }
 
+    .eco-card.reveal{
+      transition:opacity .7s cubic-bezier(.16,.84,.44,1), transform .5s cubic-bezier(.16,.84,.44,1), background .45s ease;
+    }
+
     .eco-card:last-child{border-right:0}
-    .eco-card:hover{background:linear-gradient(180deg, rgba(71,44,47,.045), rgba(71,44,47,.02));transform:translateY(-8px)}
+    .eco-card:hover{background:linear-gradient(180deg, rgba(71,44,47,.06), rgba(71,44,47,.02));transform:translateY(-8px) scale(1.015)}
 
     .eco-card .num{
       font-family:var(--serif);
@@ -327,7 +331,6 @@
       max-width:330px;
     }
 
-    .eco-card{transition:.45s cubic-bezier(.16,.84,.44,1), opacity .4s ease}
     .eco-cards.is-hovering .eco-card:not(:hover){opacity:.55}
 
     .eco-card--lume{
@@ -755,7 +758,13 @@
       .eco-head{grid-template-columns:1fr;gap:28px}
       .eco-note{margin-left:0;padding-left:20px}
       .eco-cards{grid-template-columns:1fr}
-      .eco-card{border-right:0;border-bottom:1px solid var(--line);min-height:auto}
+      .eco-card{
+        border-right:0;
+        border-bottom:1px solid var(--line);
+        min-height:72vh;
+        justify-content:center;
+        padding:48px clamp(20px,5vw,32px);
+      }
       .journey-shell{grid-template-columns:1fr}
       .journey-fixed{
         height:auto;
@@ -775,7 +784,7 @@
       .brand span:last-child{display:none}
       .hero h1{font-size:clamp(2.6rem,13vw,4.2rem)}
       .section{padding:82px 0}
-      .eco-card{padding:26px 8px 26px 0}
+      .eco-card{padding:40px 20px}
       .footer-legal{font-size:.62rem;gap:8px 18px}
       .journey-fixed{padding:60px 20px}
       .journey-scroll{padding:0 20px}
@@ -837,21 +846,20 @@
         <div class="eco-head reveal-stagger">
           <div>
             <div class="eyebrow">O ecossistema Natália Ports</div>
-            <h2 class="section-title display">Uma filosofia.<br><span class="eco-head-highlight">Diferentes formas</span> de construir.</h2>
+            <h2 class="section-title display">Quando identidade encontra direção,<br><span class="eco-head-highlight">novas formas de construir</span> se tornam possíveis.</h2>
           </div>
           <div class="eco-note">
-            <p>Uma mesma filosofia atravessa tudo o que Natália constrói: desenvolver pessoas para que possam liderar, prosperar e ampliar seu impacto sem abandonar quem são.</p>
-            <p>Natália Ports, LUME e We Bilingual são expressões diferentes dessa mesma visão.</p>
+            <p>É dessa visão que nascem: <strong>Natália Ports</strong>, <strong>LUME</strong> e <strong>We Bilingual</strong>.</p>
           </div>
         </div>
 
-        <div class="eco-cards reveal-stagger">
-          <article class="eco-card">
+        <div class="eco-cards">
+          <article class="eco-card reveal">
             <span class="num">01</span>
             <div>
               <h3>Natália Ports</h3>
-              <p class="eco-card-tagline">Empresária, mentora e líder.</p>
-              <p>Desenvolve mulheres, líderes e organizações através de mentorias, treinamentos, palestras e experiências estratégicas.</p>
+              <p class="eco-card-tagline">Liderança, posicionamento e desenvolvimento de negócios.</p>
+              <p>Natália desenvolve mulheres, líderes e organizações através de mentorias, treinamentos, palestras, consultorias e experiências formativas — transformando identidade e propósito em direção, posicionamento e ação.</p>
             </div>
             <div class="eco-card-actions">
               <a class="social-link" href="https://www.instagram.com/nataliaports/" target="_blank" rel="noopener">
@@ -865,21 +873,21 @@
             </div>
           </article>
 
-          <article class="eco-card eco-card--lume">
+          <article class="eco-card reveal eco-card--lume">
             <span class="num">02</span>
             <div>
               <h3>LUME</h3>
-              <p class="eco-card-tagline">Aceleradora de posicionamento e prosperidade.</p>
-              <p>Para empresárias que desejam estruturar, posicionar e sustentar o crescimento dos próprios negócios sem perder identidade.</p>
+              <p class="eco-card-tagline">Aceleradora de posicionamento e prosperidade para empresárias.</p>
+              <p>A LUME desenvolve mulheres que querem estruturar, posicionar e sustentar negócios mais maduros e prósperos, sem precisar abandonar a própria identidade, seus princípios ou sua essência.</p>
             </div>
           </article>
 
-          <article class="eco-card">
+          <article class="eco-card reveal">
             <span class="num">03</span>
             <div>
               <h3>We Bilingual</h3>
               <p class="eco-card-tagline">Escola boutique de inglês.</p>
-              <p>O idioma como ferramenta para ampliar repertório, conectar culturas e abrir novas possibilidades no mundo.</p>
+              <p>A We Bilingual transforma o inglês em ferramenta de comunicação, confiança e expansão — ampliando repertório, conectando culturas e abrindo novas possibilidades para um mundo globalizado.</p>
             </div>
             <div class="eco-card-actions">
               <a class="social-link" href="https://www.instagram.com/webilingual/" target="_blank" rel="noopener">
@@ -993,8 +1001,13 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+          const el = entry.target;
+          // pequeno atraso entre os cards do ecossistema, sem afetar a transição de hover
+          const delay = (!prefersReducedMotion && el.classList.contains('eco-card'))
+            ? Array.from(el.parentElement.children).indexOf(el) * 120
+            : 0;
+          setTimeout(() => el.classList.add('visible'), delay);
+          observer.unobserve(el);
         }
       });
     }, { threshold: 0.14 });
