@@ -596,6 +596,31 @@
       display:block;
     }
 
+    .about-copy{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .about-block{
+      min-height:64vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding-block:32px;
+    }
+
+    .about-hook{
+      font-family:var(--serif);
+      font-weight:400;
+      text-transform:uppercase;
+      letter-spacing:.01em;
+      font-size:clamp(1.7rem,3.2vw,2.9rem);
+      line-height:1.18;
+      color:var(--ink);
+      margin:0;
+      max-width:600px;
+    }
+
     .about-copy h2{
       font-size:clamp(2.7rem,4.8vw,4.8rem);
       margin:14px 0 28px;
@@ -616,15 +641,7 @@
       max-width:720px;
     }
 
-    .about-note{
-      margin:18px 0 0;
-      font-size:.8rem;
-      letter-spacing:.02em;
-      color:#7a6d63;
-    }
-
     .about-highlight{
-      margin-top:36px;
       padding:24px 28px;
       border-left:3px solid var(--wine);
       background:rgba(71,44,47,.06);
@@ -651,43 +668,41 @@
 
     .about-highlight p em{font-style:italic}
 
-    .about-highlight-secondary{
-      margin-top:12px;
-      font-family:var(--sans) !important;
-      font-size:.85rem !important;
-      color:#7a6d63 !important;
-      line-height:1.6;
-    }
-
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      margin-top:56px;
+    .stats-editorial{
+      display:flex;
+      flex-direction:column;
+      gap:clamp(30px,4.5vw,46px);
       border-top:1px solid rgba(46,36,24,.2);
+      padding-top:36px;
+      max-width:640px;
     }
 
-    .stat{
-      padding:30px 0;
-      border-bottom:1px solid rgba(46,36,24,.2);
-      transition:.6s cubic-bezier(.16,.84,.44,1);
+    .stat-row{
+      display:flex;
+      align-items:baseline;
+      gap:clamp(18px,3vw,32px);
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .8s cubic-bezier(.16,.84,.44,1), transform .8s cubic-bezier(.16,.84,.44,1);
     }
 
-    .stat:nth-child(odd){padding-right:28px;border-right:1px solid rgba(46,36,24,.2)}
-    .stat:nth-child(even){padding-left:28px}
+    .stat-row.visible{opacity:1;transform:none}
 
-    .stat strong{
-      display:block;
+    .stat-row strong{
+      flex:0 0 auto;
+      min-width:clamp(110px,12vw,160px);
       font-family:var(--serif);
-      font-size:clamp(2rem,3.4vw,3.6rem);
+      font-size:clamp(2.2rem,4vw,3.6rem);
       font-weight:400;
       font-variant-numeric:tabular-nums;
     }
 
-    .stat span{
-      font-size:.74rem;
+    .stat-row span{
+      font-size:.76rem;
       text-transform:uppercase;
-      letter-spacing:.14em;
-      opacity:.66;
+      letter-spacing:.12em;
+      color:#7a6d63;
+      max-width:260px;
     }
 
     .footer-statement{
@@ -794,6 +809,7 @@
       .circle{width:clamp(160px,46vw,190px)}
       .about-grid{grid-template-columns:1fr}
       .about-photo{position:relative;top:auto;min-height:460px}
+      .about-block{min-height:auto;padding-block:36px}
     }
 
     @media(max-width:580px){
@@ -803,8 +819,8 @@
       .section{padding:82px 0}
       .eco-card{padding:40px 20px}
       .footer-legal{font-size:.62rem;gap:8px 18px}
-      .stats{grid-template-columns:1fr}
-      .stat,.stat:nth-child(odd),.stat:nth-child(even){padding:24px 0;border-right:0}
+      .stat-row{flex-direction:column;align-items:flex-start;gap:4px}
+      .stat-row strong{min-width:auto}
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -819,9 +835,15 @@
         transform:none !important;
         transition:none !important;
       }
-      .eco-card, .stat, .about-photo img, .hero-copy{
+      .eco-card, .about-photo img, .hero-copy{
         transition:none !important;
       }
+      .stat-row{
+        opacity:1 !important;
+        transform:none !important;
+        transition:none !important;
+      }
+      .about-block{min-height:auto !important}
       .journey{height:auto !important}
       .journey-pin{position:relative !important;height:auto !important}
       .circle-wrap, .journey-connector, .journey-closing{
@@ -974,24 +996,32 @@
           <img src="foto-principal.png" alt="Natália Ports" id="aboutPhotoImg">
         </div>
 
-        <div class="about-copy reveal-stagger">
-          <div class="eyebrow">Por trás da marca</div>
-          <h2 class="display">Natália Ports.</h2>
-          <p class="about-tagline">Empresária, mentora, líder e escritora internacional.</p>
-          <p class="bio">Há 6 anos empreendendo, Natália construiu sua trajetória entre educação, liderança, desenvolvimento humano e negócios. É fundadora da We Bilingual, criadora da LUME e desenvolve mulheres e empresas através de mentorias, treinamentos, palestras e experiências formativas.</p>
-
-          <div class="stats reveal-stagger">
-            <div class="stat"><strong class="counter" data-target="1000" data-prefix="+" data-format="thousand">0</strong><span>alunos impactados pela We Bilingual</span></div>
-            <div class="stat"><strong class="counter" data-target="80" data-prefix="+">0</strong><span>mulheres mentoradas pela LUME</span></div>
-            <div class="stat"><strong>Brasil + EUA</strong><span>atuação e impacto internacional</span></div>
-            <div class="stat"><strong class="counter" data-target="15" data-prefix="+">0</strong><span>palestras, eventos e imersões</span></div>
+        <div class="about-copy">
+          <div class="about-block reveal">
+            <p class="about-hook">Ela construiu antes de ensinar.</p>
           </div>
-          <p class="about-note">+10 empresas assessoradas em posicionamento e crescimento.</p>
 
-          <div class="about-highlight reveal">
-            <span class="about-highlight-tag">Escritora internacional</span>
-            <p>Coautora de <em>Determinação em Movimento</em>, com lançamento internacional em Nova York.</p>
-            <p class="about-highlight-secondary">Também é professora de pós-graduação na disciplina Encantamento e Sucesso do Cliente.</p>
+          <div class="about-block reveal">
+            <div class="eyebrow">Por trás da marca</div>
+            <h2 class="display">Natália Ports</h2>
+            <p class="about-tagline">Empresária, mentora, líder e escritora internacional.</p>
+            <p class="bio">Há 6 anos, Natália vive na prática os desafios de empreender, liderar, posicionar e desenvolver negócios. Fundou a We Bilingual, criou a LUME e hoje transforma essa experiência em direção para mulheres, líderes e organizações.</p>
+          </div>
+
+          <div class="about-block">
+            <div class="stats-editorial">
+              <div class="stat-row"><strong class="counter" data-target="1000" data-prefix="+" data-format="thousand">0</strong><span>alunos impactados pela We Bilingual</span></div>
+              <div class="stat-row"><strong class="counter" data-target="80" data-prefix="+">0</strong><span>mulheres mentoradas pela LUME</span></div>
+              <div class="stat-row"><strong class="counter" data-target="15" data-prefix="+">0</strong><span>palestras, eventos e imersões</span></div>
+              <div class="stat-row"><strong>Brasil + EUA</strong><span>atuação e impacto internacional</span></div>
+            </div>
+          </div>
+
+          <div class="about-block reveal">
+            <div class="about-highlight">
+              <span class="about-highlight-tag">Escritora internacional</span>
+              <p>Coautora de <em>Determinação em Movimento</em>, com lançamento internacional em Nova York.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1121,42 +1151,42 @@
       updateParallax();
     }
 
-    // Contadores animados — dispara quando a seção de stats entra na tela
-    function animateCounters(container) {
-      container.querySelectorAll('.counter').forEach((el) => {
-        const target = parseInt(el.dataset.target, 10) || 0;
-        const prefix = el.dataset.prefix || '';
-        const isThousand = el.dataset.format === 'thousand';
+    // Contadores animados — cada linha de estatística entra e conta de forma independente
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target, 10) || 0;
+      const prefix = el.dataset.prefix || '';
+      const isThousand = el.dataset.format === 'thousand';
 
-        if (prefersReducedMotion) {
-          el.textContent = prefix + (isThousand ? target.toLocaleString('pt-BR') : target);
-          return;
-        }
+      if (prefersReducedMotion) {
+        el.textContent = prefix + (isThousand ? target.toLocaleString('pt-BR') : target);
+        return;
+      }
 
-        const duration = 1500;
-        const start = performance.now();
+      const duration = 1400;
+      const start = performance.now();
 
-        function tick(now) {
-          const p = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - p, 3);
-          const value = Math.round(target * eased);
-          el.textContent = prefix + (isThousand ? value.toLocaleString('pt-BR') : value);
-          if (p < 1) requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      });
+      function tick(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const value = Math.round(target * eased);
+        el.textContent = prefix + (isThousand ? value.toLocaleString('pt-BR') : value);
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
     }
 
     const statsObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          animateCounters(entry.target);
+          entry.target.classList.add('visible');
+          const counterEl = entry.target.querySelector('.counter');
+          if (counterEl) animateCounter(counterEl);
           statsObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.4 });
 
-    document.querySelectorAll('.stats').forEach(el => statsObserver.observe(el));
+    document.querySelectorAll('.stat-row').forEach(el => statsObserver.observe(el));
 
     // Microinteração — destaca o card do ecossistema em hover, ameniza os outros
     const ecoCardsEl = document.querySelector('.eco-cards');
