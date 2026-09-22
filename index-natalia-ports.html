@@ -337,6 +337,29 @@
       font-variant-numeric:tabular-nums;
     }
 
+    .eco-card-proof--featured{
+      flex-direction:column;
+      align-items:flex-start;
+      gap:2px;
+      margin-top:22px;
+      padding-top:18px;
+      border-top:1px solid rgba(46,36,24,.15);
+    }
+
+    .eco-card-proof--featured strong{
+      font-size:clamp(2.3rem,3.2vw,2.9rem);
+      color:var(--wine);
+      line-height:1;
+      font-variant-numeric:tabular-nums;
+    }
+
+    .eco-card-proof--featured span{
+      font-size:.68rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:#7a6d63;
+    }
+
     .eco-cards.is-hovering .eco-card:not(:hover){opacity:.55}
 
     .eco-card--lume{
@@ -648,39 +671,40 @@
       display:block;
     }
 
-    .about-signature-wrap{
+    .about-final{
       display:flex;
       flex-direction:column;
       align-items:flex-start;
+      gap:16px;
     }
 
-    .about-signature{
+    .about-final h2{
       font-family:var(--serif);
       font-weight:400;
-      font-size:clamp(2rem,3.6vw,3.4rem);
-      line-height:1.26;
+      font-size:clamp(2.2rem,4vw,3.6rem);
+      letter-spacing:-.02em;
+      line-height:.98;
+      margin:0;
+    }
+
+    .about-bio{
+      font-family:var(--serif);
+      font-size:clamp(1.05rem,1.5vw,1.3rem);
+      line-height:1.55;
       color:var(--ink);
-      margin:0;
       max-width:520px;
-    }
-
-    .about-signature-rule{
-      display:block;
-      width:0;
-      height:1px;
-      background:var(--wine);
-      margin:26px 0 18px;
-      transition:width 1.1s cubic-bezier(.16,.84,.44,1) .15s;
-    }
-
-    .about-signature-wrap.visible .about-signature-rule{width:110px}
-
-    .about-signature-name{
-      font-size:.72rem;
-      text-transform:uppercase;
-      letter-spacing:.22em;
-      color:#8a7c70;
       margin:0;
+    }
+
+    .about-quote{
+      font-family:var(--serif);
+      font-style:italic;
+      font-weight:700;
+      font-size:clamp(1.2rem,1.9vw,1.55rem);
+      line-height:1.42;
+      color:var(--wine);
+      max-width:480px;
+      margin:4px 0 0;
     }
 
     .footer-statement{
@@ -872,6 +896,10 @@
               <h3>Natália Ports</h3>
               <p class="eco-card-tagline">Liderança, posicionamento e desenvolvimento de negócios.</p>
               <p>Mentorias, treinamentos, palestras e experiências para mulheres, líderes e organizações que querem transformar propósito em direção, posicionamento e ação.</p>
+              <div class="eco-card-proof eco-card-proof--featured">
+                <strong class="counter" data-target="80" data-prefix="+">0</strong>
+                <span>mentoradas</span>
+              </div>
             </div>
             <div class="eco-card-actions">
               <a class="social-link" href="https://www.instagram.com/nataliaports/" target="_blank" rel="noopener">
@@ -910,8 +938,6 @@
               </div>
               <button type="submit" class="cta-pill lume-submit">Quero conhecer a LUME</button>
             </form>
-
-            <p class="eco-card-proof"><strong>+80</strong> empresárias mentoradas</p>
           </article>
 
           <article class="eco-card reveal eco-card--white">
@@ -920,7 +946,10 @@
               <h3>We Bilingual</h3>
               <p class="eco-card-tagline">Escola boutique de inglês.</p>
               <p>A We Bilingual transforma o inglês que você conhece no inglês que você consegue usar — com método, prática e confiança para se comunicar de verdade.</p>
-              <p class="eco-card-proof"><strong>+1.000</strong> alunos impactados</p>
+              <div class="eco-card-proof eco-card-proof--featured">
+                <strong class="counter" data-target="1000" data-prefix="+" data-format="thousand">0</strong>
+                <span>alunos impactados</span>
+              </div>
             </div>
             <div class="eco-card-actions">
               <a class="social-link" href="https://www.instagram.com/webilingual/" target="_blank" rel="noopener">
@@ -983,10 +1012,11 @@
         </div>
 
         <div class="about-copy">
-          <div class="about-signature-wrap reveal-stagger">
-            <p class="about-signature">Tudo passa.<br>Quem você é, permanece.</p>
-            <span class="about-signature-rule" aria-hidden="true"></span>
-            <p class="about-signature-name">Natália Ports</p>
+          <div class="about-final reveal-stagger">
+            <div class="eyebrow">Quem é Natália Ports</div>
+            <h2 class="display">Natália Ports</h2>
+            <p class="about-bio">Desde 2020, Natália constrói sua trajetória entre educação, liderança e negócios. Fundou a We Bilingual, criou a LUME e também levou suas ideias para a escrita como coautora de <em>Determinação em Movimento</em>.</p>
+            <p class="about-quote">Antes de fortalecer uma empresa, é preciso fortalecer quem está à frente dela.</p>
           </div>
         </div>
       </div>
@@ -1119,6 +1149,44 @@
         card.addEventListener('mouseenter', () => ecoCardsEl.classList.add('is-hovering'));
         card.addEventListener('mouseleave', () => ecoCardsEl.classList.remove('is-hovering'));
       });
+    }
+
+    // Contagem animada das provas em destaque (+80 mentoradas, +1.000 alunos impactados)
+    function animateFeaturedCounter(el) {
+      const target = parseInt(el.dataset.target, 10) || 0;
+      const prefix = el.dataset.prefix || '';
+      const isThousand = el.dataset.format === 'thousand';
+
+      if (prefersReducedMotion) {
+        el.textContent = prefix + (isThousand ? target.toLocaleString('pt-BR') : target);
+        return;
+      }
+
+      const duration = 1300;
+      const start = performance.now();
+
+      function tick(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const value = Math.round(target * eased);
+        el.textContent = prefix + (isThousand ? value.toLocaleString('pt-BR') : value);
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    const featuredCounters = document.querySelectorAll('.eco-card-proof--featured .counter');
+    if (featuredCounters.length) {
+      const featuredCounterObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateFeaturedCounter(entry.target);
+            featuredCounterObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      featuredCounters.forEach(el => featuredCounterObserver.observe(el));
     }
 
     // Terceira dobra — texto explicativo por pilar: hover no desktop, toque no mobile
