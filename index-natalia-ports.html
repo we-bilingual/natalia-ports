@@ -315,6 +315,13 @@
       max-width:330px;
     }
 
+    .eco-card-proof{
+      margin:14px 0 0;
+      font-size:.72rem;
+      letter-spacing:.06em;
+      color:#8a7c70;
+    }
+
     .eco-cards.is-hovering .eco-card:not(:hover){opacity:.55}
 
     .eco-card--lume{
@@ -331,6 +338,53 @@
     }
 
     .eco-card--lume h3{font-size:clamp(2.1rem,2.9vw,3.1rem)}
+
+    .eco-card--white{background:#fff}
+    .eco-card--white:hover{background:#fdfdfd}
+
+    .lume-form{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      max-width:320px;
+      margin-top:6px;
+    }
+
+    .lume-field{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+
+    .lume-field label{
+      font-size:.66rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:#8a7c70;
+    }
+
+    .lume-field input{
+      border:none;
+      border-bottom:1px solid rgba(46,36,24,.25);
+      background:transparent;
+      padding:6px 2px;
+      font-family:var(--sans);
+      font-size:.92rem;
+      color:var(--ink);
+      outline:none;
+      transition:border-color .3s ease;
+    }
+
+    .lume-field input:focus{border-color:var(--wine)}
+
+    button.lume-submit{
+      align-self:flex-start;
+      margin-top:4px;
+      appearance:none;
+      background:transparent;
+      font-family:inherit;
+      cursor:pointer;
+    }
 
     .eco-card-actions{
       margin-top:auto;
@@ -396,7 +450,7 @@
       height:32px;
       border-radius:50%;
       background:var(--beige);
-      color:var(--brown);
+      color:#25D366;
       flex-shrink:0;
     }
 
@@ -554,15 +608,13 @@
       display:grid;
       grid-template-columns:.95fr 1.05fr;
       gap:clamp(40px,8vw,110px);
-      align-items:start;
+      align-items:center;
     }
 
     .about-photo{
       aspect-ratio:4/5;
-      min-height:560px;
+      min-height:480px;
       overflow:hidden;
-      position:sticky;
-      top:34px;
     }
 
     .about-photo::before{
@@ -582,112 +634,22 @@
       display:block;
     }
 
-    .about-copy{
-      display:flex;
-      flex-direction:column;
-    }
-
-    .about-block{
-      min-height:64vh;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      padding-block:32px;
-    }
-
-    .about-copy h2{
-      font-size:clamp(2.7rem,4.8vw,4.8rem);
-      margin:14px 0 20px;
-    }
-
-    .about-tagline{
-      font-family:var(--serif);
-      font-style:italic;
-      font-size:clamp(1.1rem,1.6vw,1.3rem);
-      color:#5c4b3f;
-      margin:0 0 22px;
-    }
-
-    .about-hook{
+    .about-signature{
       font-family:var(--serif);
       font-weight:400;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-      font-size:clamp(1.05rem,1.5vw,1.3rem);
-      color:var(--wine);
-      margin:0 0 18px;
-    }
-
-    .about-copy .bio{
-      font-family:var(--serif);
-      font-size:clamp(1.05rem,1.5vw,1.3rem);
-      line-height:1.55;
-      max-width:640px;
-    }
-
-    .about-highlight{max-width:560px}
-
-    .about-highlight-tag{
-      display:block;
-      font-size:.68rem;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      font-weight:700;
-      color:var(--wine);
-      margin-bottom:10px;
-    }
-
-    .about-highlight p{
-      font-family:var(--serif);
-      font-style:italic;
-      font-size:clamp(1.05rem,1.5vw,1.3rem);
-      line-height:1.5;
+      font-size:clamp(1.9rem,3.4vw,3.2rem);
+      line-height:1.28;
+      color:var(--ink);
       margin:0;
-      color:var(--ink);
+      max-width:520px;
     }
 
-    .about-highlight p em{font-style:normal}
-
-    .about-note{
-      margin:14px 0 0;
-      font-size:.78rem;
-      color:#8a7c70;
-    }
-
-    .stats-editorial{
-      display:flex;
-      flex-wrap:wrap;
-      align-items:baseline;
-      gap:14px 40px;
-      border-top:1px solid rgba(46,36,24,.2);
-      padding-top:32px;
-      max-width:640px;
-    }
-
-    .stat-chip{
-      display:inline-flex;
-      align-items:baseline;
-      gap:9px;
-      opacity:0;
-      transform:translateY(16px);
-      transition:opacity .7s cubic-bezier(.16,.84,.44,1), transform .7s cubic-bezier(.16,.84,.44,1);
-    }
-
-    .stat-chip.visible{opacity:1;transform:none}
-
-    .stat-chip strong{
-      font-family:var(--serif);
-      font-size:clamp(1.6rem,2.4vw,2.2rem);
-      font-weight:400;
-      font-variant-numeric:tabular-nums;
-      color:var(--ink);
-    }
-
-    .stat-chip span{
-      font-size:.76rem;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      color:#7a6d63;
+    .about-signature em{
+      display:block;
+      font-style:italic;
+      opacity:.6;
+      margin-top:16px;
+      font-size:.62em;
     }
 
     .footer-statement{
@@ -793,8 +755,7 @@
       .journey-connector.is-visible{width:1px;height:clamp(16px,3.6vh,28px)}
       .circle{width:clamp(160px,46vw,190px)}
       .about-grid{grid-template-columns:1fr}
-      .about-photo{position:relative;top:auto;min-height:460px}
-      .about-block{min-height:auto;padding-block:36px}
+      .about-photo{min-height:420px}
     }
 
     @media(max-width:580px){
@@ -804,7 +765,6 @@
       .section{padding:82px 0}
       .eco-card{padding:40px 20px}
       .footer-legal{font-size:.62rem;gap:8px 18px}
-      .stats-editorial{gap:12px 26px}
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -822,12 +782,6 @@
       .eco-card, .about-photo img, .hero-copy{
         transition:none !important;
       }
-      .stat-chip{
-        opacity:1 !important;
-        transform:none !important;
-        transition:none !important;
-      }
-      .about-block{min-height:auto !important}
       .journey{height:auto !important}
       .journey-pin{position:relative !important;height:auto !important}
       .circle-wrap, .journey-connector{
@@ -904,17 +858,37 @@
             <span class="num">02</span>
             <div>
               <h3>LUME</h3>
-              <p class="eco-card-tagline">Aceleradora de posicionamento e prosperidade para empresárias.</p>
-              <p>Desenvolve mulheres que querem estruturar, posicionar e sustentar negócios mais maduros e prósperos.</p>
+              <p class="eco-card-tagline">Quer entender como funciona a LUME e se esse é o momento certo para você entrar?</p>
+              <p>Deixe seus dados para receber mais informações sobre a experiência, o processo de entrada e como a LUME pode se encaixar no momento atual do seu negócio.</p>
             </div>
+
+            <!-- Form visual pronto — quando o endpoint do Google Sheets estiver disponível, troque o action="#" abaixo pela URL real (Apps Script Web App, SheetDB, Sheet.best etc). method="POST" já está correto pra maioria desses serviços. -->
+            <form class="lume-form" action="#" method="POST">
+              <div class="lume-field">
+                <label for="lumeName">Nome</label>
+                <input type="text" id="lumeName" name="nome" autocomplete="name" required>
+              </div>
+              <div class="lume-field">
+                <label for="lumePhone">Telefone</label>
+                <input type="tel" id="lumePhone" name="telefone" autocomplete="tel" required>
+              </div>
+              <div class="lume-field">
+                <label for="lumeEmail">E-mail</label>
+                <input type="email" id="lumeEmail" name="email" autocomplete="email" required>
+              </div>
+              <button type="submit" class="cta-pill lume-submit">Quero saber mais</button>
+            </form>
+
+            <p class="eco-card-proof">+80 empresárias mentoradas</p>
           </article>
 
-          <article class="eco-card reveal">
+          <article class="eco-card reveal eco-card--white">
             <span class="num">03</span>
             <div>
               <h3>We Bilingual</h3>
               <p class="eco-card-tagline">Escola boutique de inglês.</p>
               <p>A We Bilingual transforma o inglês que você conhece no inglês que você consegue usar — com método, prática e confiança para se comunicar de verdade.</p>
+              <p class="eco-card-proof">+1.000 alunos impactados</p>
             </div>
             <div class="eco-card-actions">
               <a class="social-link" href="https://www.instagram.com/webilingual/" target="_blank" rel="noopener">
@@ -979,29 +953,7 @@
         </div>
 
         <div class="about-copy">
-          <div class="about-block reveal">
-            <h2 class="display">Natália Ports.</h2>
-            <p class="about-tagline">Empresária, mentora, líder e escritora internacional.</p>
-            <p class="about-hook">Construiu antes de ensinar.</p>
-            <p class="bio">Há 6 anos, Natália empreende, lidera e desenvolve negócios na prática. É fundadora da We Bilingual, criadora da LUME e transforma sua experiência em direção para mulheres, líderes e organizações.</p>
-          </div>
-
-          <div class="about-block">
-            <div class="stats-editorial">
-              <span class="stat-chip"><strong class="counter" data-target="1000" data-prefix="+" data-format="thousand">0</strong><span>alunos impactados</span></span>
-              <span class="stat-chip"><strong class="counter" data-target="80" data-prefix="+">0</strong><span>mulheres mentoradas</span></span>
-              <span class="stat-chip"><strong class="counter" data-target="15" data-prefix="+">0</strong><span>palestras, eventos e imersões</span></span>
-              <span class="stat-chip"><strong>Brasil + EUA</strong><span>atuação internacional</span></span>
-            </div>
-            <p class="about-note">+10 empresas assessoradas.</p>
-          </div>
-
-          <div class="about-block reveal">
-            <div class="about-highlight">
-              <span class="about-highlight-tag">Escritora internacional</span>
-              <p>Coautora de <em>Determinação em Movimento</em>, com lançamento internacional em Nova York.</p>
-            </div>
-          </div>
+          <p class="about-signature reveal">No fim, tudo volta para quem você é.<br><em>Remember Who You Are.</em></p>
         </div>
       </div>
     </section>
@@ -1125,43 +1077,6 @@
 
       updateParallax();
     }
-
-    // Contadores animados — cada linha de estatística entra e conta de forma independente
-    function animateCounter(el) {
-      const target = parseInt(el.dataset.target, 10) || 0;
-      const prefix = el.dataset.prefix || '';
-      const isThousand = el.dataset.format === 'thousand';
-
-      if (prefersReducedMotion) {
-        el.textContent = prefix + (isThousand ? target.toLocaleString('pt-BR') : target);
-        return;
-      }
-
-      const duration = 1400;
-      const start = performance.now();
-
-      function tick(now) {
-        const p = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - p, 3);
-        const value = Math.round(target * eased);
-        el.textContent = prefix + (isThousand ? value.toLocaleString('pt-BR') : value);
-        if (p < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    }
-
-    const statsObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          const counterEl = entry.target.querySelector('.counter');
-          if (counterEl) animateCounter(counterEl);
-          statsObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.4 });
-
-    document.querySelectorAll('.stat-chip').forEach(el => statsObserver.observe(el));
 
     // Microinteração — destaca o card do ecossistema em hover, ameniza os outros
     const ecoCardsEl = document.querySelector('.eco-cards');
