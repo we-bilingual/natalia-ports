@@ -609,21 +609,9 @@
       padding-block:32px;
     }
 
-    .about-hook{
-      font-family:var(--serif);
-      font-weight:400;
-      text-transform:uppercase;
-      letter-spacing:.01em;
-      font-size:clamp(1.7rem,3.2vw,2.9rem);
-      line-height:1.18;
-      color:var(--ink);
-      margin:0;
-      max-width:600px;
-    }
-
     .about-copy h2{
       font-size:clamp(2.7rem,4.8vw,4.8rem);
-      margin:14px 0 28px;
+      margin:14px 0 20px;
     }
 
     .about-tagline{
@@ -631,28 +619,33 @@
       font-style:italic;
       font-size:clamp(1.1rem,1.6vw,1.3rem);
       color:#5c4b3f;
+      margin:0 0 22px;
+    }
+
+    .about-hook{
+      font-family:var(--serif);
+      font-weight:400;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      font-size:clamp(1.05rem,1.5vw,1.3rem);
+      color:var(--wine);
       margin:0 0 18px;
     }
 
     .about-copy .bio{
       font-family:var(--serif);
-      font-size:clamp(1.08rem,1.6vw,1.4rem);
-      line-height:1.5;
-      max-width:720px;
-    }
-
-    .about-highlight{
-      padding:24px 28px;
-      border-left:3px solid var(--wine);
-      background:rgba(71,44,47,.06);
+      font-size:clamp(1.05rem,1.5vw,1.3rem);
+      line-height:1.55;
       max-width:640px;
     }
+
+    .about-highlight{max-width:560px}
 
     .about-highlight-tag{
       display:block;
       font-size:.68rem;
       text-transform:uppercase;
-      letter-spacing:.14em;
+      letter-spacing:.16em;
       font-weight:700;
       color:var(--wine);
       margin-bottom:10px;
@@ -660,49 +653,55 @@
 
     .about-highlight p{
       font-family:var(--serif);
-      font-size:clamp(1.05rem,1.5vw,1.25rem);
+      font-style:italic;
+      font-size:clamp(1.05rem,1.5vw,1.3rem);
       line-height:1.5;
       margin:0;
       color:var(--ink);
     }
 
-    .about-highlight p em{font-style:italic}
+    .about-highlight p em{font-style:normal}
+
+    .about-note{
+      margin:14px 0 0;
+      font-size:.78rem;
+      color:#8a7c70;
+    }
 
     .stats-editorial{
       display:flex;
-      flex-direction:column;
-      gap:clamp(30px,4.5vw,46px);
+      flex-wrap:wrap;
+      align-items:baseline;
+      gap:14px 40px;
       border-top:1px solid rgba(46,36,24,.2);
-      padding-top:36px;
+      padding-top:32px;
       max-width:640px;
     }
 
-    .stat-row{
-      display:flex;
+    .stat-chip{
+      display:inline-flex;
       align-items:baseline;
-      gap:clamp(18px,3vw,32px);
+      gap:9px;
       opacity:0;
-      transform:translateY(22px);
-      transition:opacity .8s cubic-bezier(.16,.84,.44,1), transform .8s cubic-bezier(.16,.84,.44,1);
+      transform:translateY(16px);
+      transition:opacity .7s cubic-bezier(.16,.84,.44,1), transform .7s cubic-bezier(.16,.84,.44,1);
     }
 
-    .stat-row.visible{opacity:1;transform:none}
+    .stat-chip.visible{opacity:1;transform:none}
 
-    .stat-row strong{
-      flex:0 0 auto;
-      min-width:clamp(110px,12vw,160px);
+    .stat-chip strong{
       font-family:var(--serif);
-      font-size:clamp(2.2rem,4vw,3.6rem);
+      font-size:clamp(1.6rem,2.4vw,2.2rem);
       font-weight:400;
       font-variant-numeric:tabular-nums;
+      color:var(--ink);
     }
 
-    .stat-row span{
+    .stat-chip span{
       font-size:.76rem;
       text-transform:uppercase;
-      letter-spacing:.12em;
+      letter-spacing:.08em;
       color:#7a6d63;
-      max-width:260px;
     }
 
     .footer-statement{
@@ -819,8 +818,7 @@
       .section{padding:82px 0}
       .eco-card{padding:40px 20px}
       .footer-legal{font-size:.62rem;gap:8px 18px}
-      .stat-row{flex-direction:column;align-items:flex-start;gap:4px}
-      .stat-row strong{min-width:auto}
+      .stats-editorial{gap:12px 26px}
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -838,7 +836,7 @@
       .eco-card, .about-photo img, .hero-copy{
         transition:none !important;
       }
-      .stat-row{
+      .stat-chip{
         opacity:1 !important;
         transform:none !important;
         transition:none !important;
@@ -998,23 +996,20 @@
 
         <div class="about-copy">
           <div class="about-block reveal">
-            <p class="about-hook">Ela construiu antes de ensinar.</p>
-          </div>
-
-          <div class="about-block reveal">
-            <div class="eyebrow">Por trás da marca</div>
-            <h2 class="display">Natália Ports</h2>
+            <h2 class="display">Natália Ports.</h2>
             <p class="about-tagline">Empresária, mentora, líder e escritora internacional.</p>
-            <p class="bio">Há 6 anos, Natália vive na prática os desafios de empreender, liderar, posicionar e desenvolver negócios. Fundou a We Bilingual, criou a LUME e hoje transforma essa experiência em direção para mulheres, líderes e organizações.</p>
+            <p class="about-hook">Construiu antes de ensinar.</p>
+            <p class="bio">Há 6 anos, Natália empreende, lidera e desenvolve negócios na prática. É fundadora da We Bilingual, criadora da LUME e transforma sua experiência em direção para mulheres, líderes e organizações.</p>
           </div>
 
           <div class="about-block">
             <div class="stats-editorial">
-              <div class="stat-row"><strong class="counter" data-target="1000" data-prefix="+" data-format="thousand">0</strong><span>alunos impactados pela We Bilingual</span></div>
-              <div class="stat-row"><strong class="counter" data-target="80" data-prefix="+">0</strong><span>mulheres mentoradas pela LUME</span></div>
-              <div class="stat-row"><strong class="counter" data-target="15" data-prefix="+">0</strong><span>palestras, eventos e imersões</span></div>
-              <div class="stat-row"><strong>Brasil + EUA</strong><span>atuação e impacto internacional</span></div>
+              <span class="stat-chip"><strong class="counter" data-target="1000" data-prefix="+" data-format="thousand">0</strong><span>alunos impactados</span></span>
+              <span class="stat-chip"><strong class="counter" data-target="80" data-prefix="+">0</strong><span>mulheres mentoradas</span></span>
+              <span class="stat-chip"><strong class="counter" data-target="15" data-prefix="+">0</strong><span>palestras, eventos e imersões</span></span>
+              <span class="stat-chip"><strong>Brasil + EUA</strong><span>atuação internacional</span></span>
             </div>
+            <p class="about-note">+10 empresas assessoradas.</p>
           </div>
 
           <div class="about-block reveal">
@@ -1186,7 +1181,7 @@
       });
     }, { threshold: 0.4 });
 
-    document.querySelectorAll('.stat-row').forEach(el => statsObserver.observe(el));
+    document.querySelectorAll('.stat-chip').forEach(el => statsObserver.observe(el));
 
     // Microinteração — destaca o card do ecossistema em hover, ameniza os outros
     const ecoCardsEl = document.querySelector('.eco-cards');
