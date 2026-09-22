@@ -227,8 +227,8 @@
     }
 
     .section-title{
-      font-size:clamp(2.5rem,5vw,4.8rem);
-      margin:16px 0 24px;
+      font-size:clamp(2.4rem,3.8vw,4rem);
+      margin:14px 0 20px;
     }
 
     .section-intro{
@@ -255,8 +255,8 @@
     }
 
     .eco-head{
-      max-width:900px;
-      margin-bottom:44px;
+      max-width:1020px;
+      margin-bottom:40px;
       position:relative;
     }
 
@@ -603,7 +603,7 @@
     .journey-connector.is-visible{width:clamp(20px,3.6vw,56px)}
 
     .journey-detail{
-      min-height:3.4em;
+      min-height:5.6em;
       max-width:520px;
       display:flex;
       align-items:flex-start;
@@ -706,6 +706,10 @@
       margin:4px 0 0;
     }
 
+    .quote-word{display:inline-block}
+    .quote-char{opacity:0;transition:opacity .25s ease}
+    .quote-char.is-visible{opacity:1}
+
     .footer-statement{
       background:var(--brown);
       color:var(--off);
@@ -803,11 +807,22 @@
         padding:48px clamp(20px,5vw,32px);
       }
       .journey{height:260vh}
-      .journey-pin{gap:22px;padding:32px 20px}
-      .journey-circles{flex-direction:column}
+      .journey-pin{
+        gap:16px;
+        padding:28px 20px;
+        overflow-y:auto;
+        -webkit-overflow-scrolling:touch;
+      }
+      .journey-title{font-size:clamp(1.8rem,7vw,2.6rem)}
+      .journey-circles{flex-direction:column;gap:10px}
       .journey-connector{width:1px;height:0;transition:height .7s cubic-bezier(.16,.84,.44,1)}
-      .journey-connector.is-visible{width:1px;height:clamp(16px,3.6vh,28px)}
-      .circle{width:clamp(160px,46vw,190px)}
+      .journey-connector.is-visible{width:1px;height:clamp(12px,2.6vh,20px)}
+      .circle{width:clamp(120px,34vw,145px);padding:14px}
+      .circle h3{font-size:clamp(1.05rem,4.4vw,1.3rem)}
+      .circle p{font-size:.72rem}
+      .circle-num{font-size:.6rem}
+      .journey-detail{min-height:6.8em}
+      .journey-detail-text{font-size:.88rem}
       .about-grid{grid-template-columns:1fr}
       .about-photo{min-height:420px}
     }
@@ -885,7 +900,7 @@
       <div class="container">
         <div class="eco-head reveal-stagger">
           <div class="eyebrow">O ecossistema Natália Ports</div>
-          <h2 class="section-title display">A mesma visão que desenvolve pessoas<br><span class="eco-head-highlight">também transforma negócios</span> e amplia caminhos.</h2>
+          <h2 class="section-title display">A mesma visão que desenvolve pessoas <span class="eco-head-highlight">também transforma negócios</span><br>e amplia caminhos.</h2>
         </div>
 
         <div class="eco-cards">
@@ -1015,7 +1030,7 @@
           <div class="about-final reveal-stagger">
             <h2 class="display">Natália Ports</h2>
             <p class="about-bio">Desde 2020, Natália constrói sua trajetória entre educação, liderança e negócios. Fundou a We Bilingual, criou a LUME e também levou suas ideias para a escrita como coautora de <em>Determinação em Movimento</em>, publicado em Nova York.</p>
-            <p class="about-quote">"Antes de fortalecer uma empresa, é preciso fortalecer quem está à frente dela."</p>
+            <p class="about-quote" id="aboutQuote">"Antes de fortalecer uma empresa, é preciso fortalecer quem está à frente dela."</p>
           </div>
         </div>
       </div>
@@ -1186,6 +1201,51 @@
       }, { threshold: 0.5 });
 
       featuredCounters.forEach(el => featuredCounterObserver.observe(el));
+    }
+
+    // Efeito de escrita na frase final — letra por letra, sem cursor, ritmo lento e editorial
+    const aboutQuoteEl = document.getElementById('aboutQuote');
+    if (aboutQuoteEl) {
+      const originalQuoteText = aboutQuoteEl.textContent;
+
+      if (prefersReducedMotion) {
+        aboutQuoteEl.textContent = originalQuoteText;
+      } else {
+        aboutQuoteEl.textContent = '';
+        const chars = [];
+        originalQuoteText.split(' ').forEach((word, wi, words) => {
+          const wordSpan = document.createElement('span');
+          wordSpan.className = 'quote-word';
+          Array.from(word).forEach((ch) => {
+            const charSpan = document.createElement('span');
+            charSpan.className = 'quote-char';
+            charSpan.textContent = ch;
+            wordSpan.appendChild(charSpan);
+            chars.push(charSpan);
+          });
+          aboutQuoteEl.appendChild(wordSpan);
+          if (wi < words.length - 1) aboutQuoteEl.appendChild(document.createTextNode(' '));
+        });
+
+        const quoteObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              let i = 0;
+              const revealNext = () => {
+                if (i < chars.length) {
+                  chars[i].classList.add('is-visible');
+                  i++;
+                  setTimeout(revealNext, 42);
+                }
+              };
+              setTimeout(revealNext, 900);
+              quoteObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.4 });
+
+        quoteObserver.observe(aboutQuoteEl);
+      }
     }
 
     // Terceira dobra — texto explicativo por pilar: hover no desktop, toque no mobile
