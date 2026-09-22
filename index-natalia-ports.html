@@ -379,7 +379,7 @@
       align-items:center;
       gap:12px;
       padding:8px 20px 8px 8px;
-      background:var(--brown);
+      background:var(--taupe);
       color:var(--off);
       border-radius:999px;
       font-size:.7rem;
@@ -401,7 +401,7 @@
     }
 
     .cta-whatsapp-icon svg{width:17px;height:17px}
-    .cta-whatsapp:hover{background:var(--wine)}
+    .cta-whatsapp:hover{background:var(--brown)}
     .cta-whatsapp:hover .cta-whatsapp-icon{background:var(--off)}
 
     .journey{
@@ -535,20 +535,6 @@
     }
 
     .journey-detail.is-active .journey-detail-text{opacity:1;transform:none}
-
-    .journey-closing{
-      font-family:var(--serif);
-      font-style:italic;
-      font-size:clamp(1rem,1.6vw,1.2rem);
-      color:rgba(245,241,237,.85);
-      max-width:520px;
-      margin:0;
-      opacity:0;
-      transform:translateY(14px);
-      transition:opacity .8s ease, transform .8s ease;
-    }
-
-    .journey-closing.is-visible{opacity:1;transform:none}
 
     .about{
       background:#e8dfd6;
@@ -707,28 +693,28 @@
     .footer-statement{
       background:var(--brown);
       color:var(--off);
-      padding:74px 0;
+      padding:44px 0;
       text-align:center;
     }
 
     .footer-statement p{
       font-family:var(--serif);
-      font-size:clamp(1.9rem,3.6vw,3.6rem);
+      font-size:clamp(1.4rem,2.4vw,2.4rem);
       line-height:1;
       margin:0;
     }
 
     .footer-statement small{
       display:block;
-      margin-top:24px;
+      margin-top:14px;
       opacity:.55;
       text-transform:uppercase;
       letter-spacing:.16em;
     }
 
     .footer-legal{
-      margin-top:44px;
-      padding-top:26px;
+      margin-top:24px;
+      padding-top:18px;
       border-top:1px solid rgba(245,241,237,.16);
       display:flex;
       flex-wrap:wrap;
@@ -844,7 +830,7 @@
       .about-block{min-height:auto !important}
       .journey{height:auto !important}
       .journey-pin{position:relative !important;height:auto !important}
-      .circle-wrap, .journey-connector, .journey-closing{
+      .circle-wrap, .journey-connector{
         opacity:1 !important;
         transform:none !important;
         transition:none !important;
@@ -900,7 +886,7 @@
             <div>
               <h3>Natália Ports</h3>
               <p class="eco-card-tagline">Liderança, posicionamento e desenvolvimento de negócios.</p>
-              <p>Natália desenvolve mulheres, líderes e organizações através de mentorias, treinamentos, palestras, consultorias e experiências formativas — transformando identidade e propósito em direção, posicionamento e ação.</p>
+              <p>Mentorias, treinamentos, palestras e experiências para mulheres, líderes e organizações que querem transformar propósito em direção, posicionamento e ação.</p>
             </div>
             <div class="eco-card-actions">
               <a class="social-link" href="https://www.instagram.com/nataliaports/" target="_blank" rel="noopener">
@@ -919,7 +905,7 @@
             <div>
               <h3>LUME</h3>
               <p class="eco-card-tagline">Aceleradora de posicionamento e prosperidade para empresárias.</p>
-              <p>A LUME desenvolve mulheres que querem estruturar, posicionar e sustentar negócios mais maduros e prósperos, sem precisar abandonar a própria identidade, seus princípios ou sua essência.</p>
+              <p>Desenvolve mulheres que querem estruturar, posicionar e sustentar negócios mais maduros e prósperos.</p>
             </div>
           </article>
 
@@ -928,7 +914,7 @@
             <div>
               <h3>We Bilingual</h3>
               <p class="eco-card-tagline">Escola boutique de inglês.</p>
-              <p>A We Bilingual transforma o inglês em ferramenta de comunicação, confiança e expansão — ampliando repertório, conectando culturas e abrindo novas possibilidades para um mundo globalizado.</p>
+              <p>A We Bilingual transforma o inglês que você conhece no inglês que você consegue usar — com método, prática e confiança para se comunicar de verdade.</p>
             </div>
             <div class="eco-card-actions">
               <a class="social-link" href="https://www.instagram.com/webilingual/" target="_blank" rel="noopener">
@@ -982,8 +968,6 @@
         <div class="journey-detail" aria-live="polite">
           <p class="journey-detail-text" id="journeyDetailText"></p>
         </div>
-
-        <p class="journey-closing">Identidade. Liderança. Construção.<br>A lógica por trás de tudo o que Natália constrói.</p>
       </div>
     </section>
 
@@ -1033,7 +1017,6 @@
             <a href="privacidade.html">Política de Privacidade / LGPD</a>
             <a href="termos.html">Termos de Uso</a>
           </span>
-          <span>Dúvidas sobre privacidade e dados: <a href="tel:+554488271830">(44) 8827-1830</a></span>
         </div>
       </div>
     </footer>
@@ -1089,9 +1072,7 @@
     const journeySection = document.querySelector('.journey');
     const journeyCircles = document.querySelectorAll('.circle-wrap');
     const journeyConnectors = document.querySelectorAll('.journey-connector');
-    const journeyClosing = document.querySelector('.journey-closing');
     const journeyStages = [0.06, 0.36, 0.66];
-    const journeyClosingAt = 0.86;
 
     function updateJourneyScene() {
       if (!journeySection) return;
@@ -1106,7 +1087,6 @@
       journeyConnectors.forEach((conn, i) => {
         conn.classList.toggle('is-visible', progress >= journeyStages[i + 1]);
       });
-      if (journeyClosing) journeyClosing.classList.toggle('is-visible', progress >= journeyClosingAt);
     }
 
     function updateParallax() {
