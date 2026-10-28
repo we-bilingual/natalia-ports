@@ -1,0 +1,29 @@
+# ============================================================
+# Headers de segurança HTTP — formato Cloudflare Pages / Netlify.
+#
+# STATUS ATUAL: INATIVO. O site hoje é servido pelo GitHub Pages
+# (we-bilingual.github.io), que não lê este arquivo nem aceita
+# headers HTTP customizados vindos do repositório. Este arquivo
+# fica pronto para entrar em vigor automaticamente caso o site
+# seja migrado para Cloudflare Pages, Netlify ou qualquer outra
+# plataforma que suporte esse formato.
+#
+# Se em vez de migrar a hospedagem vocês passarem a usar o
+# Cloudflare apenas como proxy de DNS na frente do GitHub Pages,
+# este arquivo sozinho NÃO basta — nesse caso os mesmos headers
+# precisam ser aplicados via um Cloudflare Worker (ou Transform
+# Rules), porque o Worker roda na borda da Cloudflare mesmo com
+# a origem sendo outra.
+#
+# Ao adicionar um endpoint real no formulário da LUME (hoje
+# action="#"), inclua o domínio desse endpoint na diretiva
+# form-action abaixo, senão o navegador bloqueia o envio.
+# ============================================================
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://www.facebook.com; font-src 'self'; media-src 'self'; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com https://www.clarity.ms https://*.clarity.ms https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains

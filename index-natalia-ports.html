@@ -2,6 +2,46 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+
+  <!-- ============================================================
+       SEGURANÇA — Content-Security-Policy e Referrer-Policy.
+       Via <meta> porque o GitHub Pages não permite headers HTTP
+       customizados a partir do repositório. Isso cobre a maior
+       parte da proteção, mas a diretiva frame-ancestors (anti-
+       clickjacking) só funciona vinda de um header real — por
+       isso existe também o arquivo /_headers na raiz do projeto,
+       pronto para quando o site for servido por uma plataforma
+       que leia headers customizados (Cloudflare Pages, Netlify
+       etc.). Os domínios do GTM, GA4, Clarity e Meta Pixel já
+       estão liberados mesmo inativos, para não travar quando os
+       IDs reais forem inseridos em window.ANALYTICS_CONFIG.
+       ============================================================ -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://connect.facebook.net;
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://www.facebook.com;
+    font-src 'self';
+    media-src 'self';
+    connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com https://www.clarity.ms https://*.clarity.ms https://www.facebook.com https://connect.facebook.net;
+    frame-src 'self' https://www.googletagmanager.com;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    upgrade-insecure-requests;
+  " />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Mitigação adicional contra clickjacking (complementa, não substitui, a falta de frame-ancestors neste host) -->
+  <script>
+    try {
+      if (window.top !== window.self) {
+        document.documentElement.style.display = 'none';
+        window.top.location.href = window.self.location.href;
+      }
+    } catch (e) {}
+  </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Natália Ports — identidade, liderança e construção de negócios." />
   <title>Natália Ports — Remember Who You Are</title>
@@ -937,7 +977,8 @@
               <p class="lume-cta-support">Deixe seus dados e saiba mais sobre a experiência.</p>
             </div>
 
-            <!-- Form visual pronto — quando o endpoint do Google Sheets estiver disponível, troque o action="#" abaixo pela URL real (Apps Script Web App, SheetDB, Sheet.best etc). method="POST" já está correto pra maioria desses serviços. -->
+            <!-- Form visual pronto — quando o endpoint do Google Sheets estiver disponível, troque o action="#" abaixo pela URL real (Apps Script Web App, SheetDB, Sheet.best etc). method="POST" já está correto pra maioria desses serviços.
+                 IMPORTANTE (segurança): ao trocar o action="#" por uma URL externa, também é preciso adicionar esse domínio na diretiva form-action da Content-Security-Policy lá no <head> (e no /_headers, se estiver usando). Sem isso, o navegador bloqueia o envio do formulário. -->
             <form class="lume-form" action="#" method="POST">
               <div class="lume-field">
                 <label for="lumeName">Nome</label>
